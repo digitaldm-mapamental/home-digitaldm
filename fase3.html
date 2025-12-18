@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)https://www.genspark.ai/api/files/s/1EByWvJv -->
+<html lang="pt-BR" data-theme="light"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fase 3 - Conversão e Venda | DigitalDM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="./fase3_files/css2" rel="stylesheet">
+    <link rel="stylesheet" href="./fase3_files/pico.min.css">
+    <style>
+      :root {
+        --primary: #10b981;
+        --primary-hover: #059669;
+        --secondary: #34d399;
+        --accent: #ec4899;
+        --success: #10b981;
+        --warning: #f59e0b;
+        --bg-body: #f8fafc;
+        --surface: #ffffff;
+        --text-main: #0f172a;
+        --text-muted: #64748b;
+        --gradient-primary: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+        --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px -1px rgba(16, 185, 129, 0.1), 0 2px 4px -1px rgba(16, 185, 129, 0.06);
+        --shadow-lg: 0 10px 15px -3px rgba(16, 185, 129, 0.1), 0 4px 6px -2px rgba(16, 185, 129, 0.05);
+        --radius-lg: 16px;
+        --radius-xl: 24px;
+      }
+
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        line-height: 1.6;
+      }
+
+      /* Typography */
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        color: var(--text-main);
+        font-weight: 700;
+        letter-spacing: -0.025em;
+      }
+
+      .gradient-text {
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* Utilities */
+      .card {
+        background: var(--surface);
+        border-radius: var(--radius-lg);
+        padding: 2rem;
+        box-shadow: var(--shadow-md);
+        border: 1px solid rgba(226, 232, 240, 0.6);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+        margin-bottom: 2rem;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+
+      /* Header Hero */
+      .hero {
+        text-align: center;
+        padding: 4rem 2rem;
+        margin-bottom: 3rem;
+        background: white;
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-lg);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 6px;
+        background: var(--gradient-primary);
+      }
+
+      .badge-pulse {
+        background: rgba(16, 185, 129, 0.1);
+        color: var(--primary);
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        display: inline-block;
+        margin-bottom: 1.5rem;
+        border: 1px solid rgba(16, 185, 129, 0.2);
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+        }
+        70% {
+          box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+        }
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 0.5rem;
+        line-height: 1.1;
+      }
+
+      .hero p.subtitle {
+        font-size: 1.25rem;
+        color: var(--text-muted);
+        margin-bottom: 2rem;
+      }
+
+      .hero-quote {
+        background: linear-gradient(to right, #ecfdf5, #d1fae5);
+        padding: 1rem 2rem;
+        border-radius: var(--radius-lg);
+        display: inline-block;
+        font-style: italic;
+        color: var(--primary);
+        font-weight: 600;
+        border: 1px solid #a7f3d0;
+      }
+
+      /* Progress Bar */
+      .progress-container {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 4rem;
+        position: relative;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .progress-container::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: #e2e8f0;
+        z-index: 0;
+        transform: translateY(-50%);
+      }
+      .progress-step {
+        position: relative;
+        z-index: 1;
+        background: white;
+        padding: 0 1rem;
+        text-align: center;
+      }
+      .step-circle {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        margin: 0 auto 0.5rem;
+        background: #e2e8f0;
+        color: var(--text-muted);
+        border: 2px solid #e2e8f0;
+      }
+      .step-active .step-circle {
+        background: var(--primary);
+        color: white;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+      }
+      .step-completed .step-circle {
+        background: #6ee7b7;
+        color: #064e3b;
+        border-color: #6ee7b7;
+      }
+      .step-label {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--text-muted);
+      }
+      .step-active .step-label {
+        color: var(--primary);
+      }
+
+      /* Sections */
+      .section-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+      .section-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: #ecfdf5;
+        color: var(--primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+      }
+
+      /* Pills & Boxes */
+      .box-highlight {
+        background: #ecfdf5;
+        border-left: 4px solid var(--primary);
+        padding: 1.5rem;
+        border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+        margin: 1rem 0;
+      }
+
+      .box-blue {
+        background: #eff6ff;
+        border: 1px solid #bfdbfe;
+        color: #1e40af;
+        padding: 1.5rem;
+        border-radius: var(--radius-lg);
+      }
+
+      .box-success {
+        background: #f0fdf4;
+        border: 1px solid #bbf7d0;
+        color: #166534;
+        padding: 1.5rem;
+        border-radius: var(--radius-lg);
+      }
+
+      .box-alert {
+        background: #fef2f2;
+        border: 1px solid #fecaca;
+        color: #991b1b;
+        padding: 1.5rem;
+        border-radius: var(--radius-lg);
+      }
+
+      .box-celebration {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: var(--radius-lg);
+        text-align: center;
+        margin-top: 3rem;
+        box-shadow: var(--shadow-lg);
+      }
+
+      /* Checklist */
+      .checklist-item {
+        background: #f8fafc;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 0.5rem;
+        border: 1px solid #e2e8f0;
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+      .checklist-item input[type='checkbox'] {
+        width: 1.2rem;
+        height: 1.2rem;
+        margin-top: 0.2rem;
+        accent-color: var(--primary);
+      }
+
+      /* Pillars */
+      .pillar-card {
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: var(--radius-lg);
+        padding: 2rem;
+        position: relative;
+        overflow: hidden;
+        height: 100%;
+      }
+      .pillar-card::top {
+        height: 4px;
+        background: var(--gradient-primary);
+      }
+      .pillar-number {
+        font-size: 4rem;
+        font-weight: 800;
+        color: #f1f5f9;
+        position: absolute;
+        top: -10px;
+        right: 10px;
+        line-height: 1;
+      }
+
+      /* Tables */
+      table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        border: 1px solid #e2e8f0;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+      }
+      th {
+        background: #f8fafc;
+        padding: 1rem;
+        text-align: left;
+        font-weight: 600;
+        color: var(--text-muted);
+        border-bottom: 1px solid #e2e8f0;
+      }
+      td {
+        padding: 1rem;
+        border-bottom: 1px solid #e2e8f0;
+      }
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      /* Footer */
+      .footer-cta {
+        text-align: center;
+        margin-top: 4rem;
+        padding: 3rem;
+        background: var(--surface);
+        border-radius: var(--radius-xl);
+        border: 2px solid #e2e8f0;
+      }
+
+      .btn-primary {
+        background: var(--gradient-primary);
+        border: none;
+        padding: 1rem 2.5rem;
+        font-size: 1.1rem;
+        border-radius: 50px;
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        margin: 0.5rem;
+      }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.4);
+      }
+
+      .btn-outline {
+        background: transparent;
+        border: 2px solid #e2e8f0;
+        padding: 0.9rem 2.4rem;
+        font-size: 1.1rem;
+        border-radius: 50px;
+        color: var(--text-muted);
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        margin: 0.5rem;
+      }
+      .btn-outline:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+      }
+
+      .slogan-footer {
+        color: var(--text-muted);
+        margin-top: 2rem;
+        font-size: 0.9rem;
+        border-top: 1px solid #e2e8f0;
+        padding-top: 2rem;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+        .grid-2,
+        .grid-3 {
+          grid-template-columns: 1fr;
+        }
+        .progress-container {
+          max-width: 100%;
+          font-size: 0.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HERO HEADER -->
+    <header class="hero">
+      <div class="badge-pulse">60 a 90 DIAS + CONTÍNUO</div>
+      <h1>FASE 3 - <span class="gradient-text">CONVERSÃO</span> E VENDA</h1>
+      <p class="subtitle">Método DigitalDM para Instagram de Moda</p>
+
+      <div class="hero-quote">"Desde 2010 realizando sonhos se tornarem realidade."</div>
+    </header>
+
+    <!-- PROGRESS BAR -->
+    <div class="progress-container">
+      <div class="progress-step step-completed">
+        <div class="step-circle">✓</div>
+        <div class="step-label">Fase 1<br>Fundamento</div>
+      </div>
+      <div class="progress-step step-completed">
+        <div class="step-circle">✓</div>
+        <div class="step-label">Fase 2<br>Engajamento</div>
+      </div>
+      <div class="progress-step step-active">
+        <div class="step-circle">3</div>
+        <div class="step-label">Fase 3<br>Conversão</div>
+      </div>
+    </div>
+
+    <!-- CONTEXT -->
+    <section class="card">
+      <div class="section-header">
+        <div class="section-icon">💰</div>
+        <h2>Contextualização</h2>
+      </div>
+      <p><strong>Objetivo Principal:</strong> Transformar a atenção e o desejo em <strong>venda real</strong>.</p>
+      <div class="box-highlight">
+        <strong>O que essa fase resolve:</strong>
+        <ul style="margin-bottom: 0; margin-top: 0.5rem">
+          <li>Engajamento alto mas sem faturamento correspondente.</li>
+          <li>Falta de urgência na decisão de compra.</li>
+          <li>Público que "fica pensando" e não fecha pedido.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3 PILLARS -->
+    <h3 style="text-align: center; margin-bottom: 2rem">Os 3 Pilares da Venda</h3>
+    <div class="grid-3">
+      <!-- Pilar 1 -->
+      <article class="pillar-card">
+        <div class="pillar-number">1</div>
+        <h4>Conteúdo com Intenção</h4>
+        <p style="color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; font-weight: 600">
+          Direcionado para Venda
+        </p>
+        <p>Vídeos que criam necessidade imediata:</p>
+        <ul style="font-size: 0.9rem">
+          <li>"Esse look acaba rápido"</li>
+          <li>"Look pronto para o evento X"</li>
+          <li>"Se você gosta de X, esse é perfeito"</li>
+        </ul>
+        <div style="
+            background: #ecfdf5;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: #065f46;
+            font-weight: 600;
+            margin-top: 1rem;
+          ">
+          "Venda não acontece no grito, acontece na confiança."
+        </div>
+      </article>
+
+      <!-- Pilar 2 -->
+      <article class="pillar-card">
+        <div class="pillar-number">2</div>
+        <h4>CTA Claro</h4>
+        <p style="color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; font-weight: 600">
+          Sem Timidez
+        </p>
+        <p>Moda vende com direção. Oriente a cliente:</p>
+        <ul style="font-size: 0.9rem">
+          <li>"Me chama agora"</li>
+          <li>"Últimas unidades"</li>
+          <li>"Qual tamanho você usa?"</li>
+        </ul>
+        <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--primary); font-weight: 600">
+          CTA não é empurrar venda, é orientar a próxima ação.
+        </p>
+      </article>
+
+      <!-- Pilar 3 -->
+      <article class="pillar-card">
+        <div class="pillar-number">3</div>
+        <h4>Ajustes Finos</h4>
+        <p style="color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; font-weight: 600">
+          Baseado em Dados
+        </p>
+        <p>Otimize o que já funciona:</p>
+        <div class="checklist-item" style="font-size: 0.9rem">📈 Reels &gt; 70% retenção → Repetir formato</div>
+        <div class="checklist-item" style="font-size: 0.9rem">💬 Mais respostas → Repetir abordagem</div>
+        <div class="checklist-item" style="font-size: 0.9rem">🔥 Mais comentários → Impulsionar</div>
+        <div style="
+            background: #f8fafc;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            color: var(--text-muted);
+          ">
+          "Crescimento vem do processo, não do viral."
+        </div>
+      </article>
+    </div>
+
+    <!-- IDEAS & PRACTICES -->
+    <section class="card" style="margin-top: 3rem">
+      <div class="section-header">
+        <div class="section-icon">💡</div>
+        <h2>Ideias Práticas para Vender Mais</h2>
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <h4>📣 Conteúdo de Venda que Funciona</h4>
+          <p><strong>1. Look com Ocasião Clara</strong></p>
+          <div class="checklist-item">"Look pronto pra festa"</div>
+          <div class="checklist-item">"Confortável pra trabalhar o dia todo"</div>
+          <p style="font-size: 0.9rem; color: var(--primary); font-weight: 600; margin-top: 0.5rem">
+            👉 Quanto mais claro o uso, mais fácil a compra.
+          </p>
+
+          <p style="margin-top: 1.5rem"><strong>2. Benefício antes do Preço</strong></p>
+          <div style="background: #f8fafc; padding: 1rem; border-radius: 8px">
+            <p style="margin-bottom: 0.5rem; color: #991b1b">❌ "Vestido R$ 189"</p>
+            <p style="margin-bottom: 0; color: #166534">
+              ✅ "Esse vestido não marca, alonga e veste super bem — R$ 189"
+            </p>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem">
+            O cérebro compra benefício, não número.
+          </p>
+        </div>
+
+        <div>
+          <h4>🔥 Escassez Real &amp; Stories</h4>
+          <p><strong>3. Escassez (Sem Exagero)</strong></p>
+          <div class="checklist-item">"Últimas unidades"</div>
+          <div class="checklist-item">"Não vai ter reposição"</div>
+          <div class="checklist-item">"Saiu muito hoje"</div>
+          <p style="font-size: 0.9rem; color: #991b1b; margin-top: 0.5rem">
+            📌 Alerta: Escassez falsa quebra confiança.
+          </p>
+
+          <p style="margin-top: 1.5rem"><strong>Stories que Vendem (Sem parecer anúncio)</strong></p>
+          <div style="border-left: 3px solid var(--primary); padding-left: 1rem; margin-top: 1rem">
+            <p style="margin-bottom: 0.5rem"><strong>1.</strong> Mostrar a peça ("Esse vestido não marca")</p>
+            <p style="margin-bottom: 0.5rem"><strong>2.</strong> Falar benefício ("Fica lindo no corpo")</p>
+            <p style="margin-bottom: 0"><strong>3.</strong> CTA direta ("Me chama no Whats que te ajudo")</p>
+          </div>
+        </div>
+      </div>
+
+      <hr style="margin: 2rem 0; border-top: 1px solid #e2e8f0">
+
+      <!-- Copy Example -->
+      <div class="box-highlight">
+        <h4 style="margin-bottom: 1rem">✍️ Modelo de Copy para Campanha</h4>
+        <p style="font-style: italic; color: #334155; margin-bottom: 0">
+          "Esse look foi pensado pra quem quer se sentir linda sem complicação.<br>
+          Conforto, caimento e elegância no mesmo vestido.<br>
+          Me chama que eu te ajudo a escolher."
+        </p>
+      </div>
+    </section>
+
+    <!-- SCHEDULE & FREQUENCY -->
+    <section class="card">
+      <div class="grid-2">
+        <div>
+          <div class="section-header">
+            <div class="section-icon">⏰</div>
+            <h3>Horários de Venda</h3>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Período</th>
+                <th>Horário</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>🌅 Manhã/Almoço</td>
+                <td>11h - 13h</td>
+              </tr>
+              <tr>
+                <td>🌆 Final de tarde/Noite</td>
+                <td>19h - 21h</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="font-size: 0.9rem; margin-top: 1rem; color: var(--text-muted)">
+            *Stories de venda funcionam muito bem à noite.
+          </p>
+        </div>
+
+        <div>
+          <div class="section-header">
+            <div class="section-icon">📅</div>
+            <h3>Frequência Ideal</h3>
+          </div>
+          <ul style="list-style: none; padding: 0">
+            <li class="checklist-item">2 a 3 conteúdos focados em venda por semana</li>
+            <li class="checklist-item">Intercalar com conteúdo leve/engajamento</li>
+            <li class="checklist-item">Não vender todos os dias de forma agressiva</li>
+          </ul>
+          <div class="box-blue" style="font-size: 0.9rem; padding: 1rem">
+            "Venda funciona melhor quando vem no meio da conversa, de forma natural."
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHECKLIST -->
+    <section class="card">
+      <div class="section-header">
+        <div class="section-icon">✅</div>
+        <h2>Checklist da Fase 3</h2>
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <h5 style="color: var(--primary)">CTA &amp; Conteúdo</h5>
+          <div class="checklist-item"><input type="checkbox"> "Me chama no WhatsApp" ou "Link na bio"</div>
+          <div class="checklist-item"><input type="checkbox"> Look com ocasião de uso clara</div>
+          <div class="checklist-item"><input type="checkbox"> Foco no benefício, não só no preço</div>
+          <div class="checklist-item"><input type="checkbox"> Prova social (clientes usando/elogiando)</div>
+        </div>
+        <div>
+          <h5 style="color: var(--primary)">Stories &amp; Ações</h5>
+          <div class="checklist-item"><input type="checkbox"> Chamada direta para o WhatsApp</div>
+          <div class="checklist-item"><input type="checkbox"> Mostrar saída de peças (movimento)</div>
+          <div class="checklist-item"><input type="checkbox"> Reforçar urgência/escassez real</div>
+          <div class="checklist-item"><input type="checkbox"> Impulsionar o que teve melhor desempenho</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAMPAIGNS (PAID TRAFFIC) -->
+    <section class="card" style="border: 2px solid #e2e8f0">
+      <div class="section-header">
+        <div class="section-icon" style="background: #eff6ff; color: #2563eb">🚀</div>
+        <h2 style="color: #1e3a8a">Boas Práticas de Campanhas (Tráfego Pago)</h2>
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <h5>1. Campanha não faz milagre sozinha</h5>
+          <p style="font-size: 0.9rem; color: var(--text-muted)">
+            O anúncio apenas amplifica o que já funciona no orgânico. Conteúdo ruim + dinheiro = desperdício.
+          </p>
+
+          <h5 style="margin-top: 1.5rem">2. Use Conteúdo Real</h5>
+          <p style="font-size: 0.9rem; color: var(--text-muted)">
+            Anúncios com cara de anúncio vendem menos. Use vídeos de celular, clientes reais e bastidores.
+          </p>
+        </div>
+
+        <div>
+          <h5>3. Objetivo Claro</h5>
+          <ul style="font-size: 0.9rem; margin-bottom: 1.5rem">
+            <li><strong>Engajamento:</strong> Vídeos leves e divertidos</li>
+            <li><strong>Mensagens:</strong> Provador + Benefício</li>
+            <li><strong>Vendas:</strong> Prova social + CTA direta</li>
+          </ul>
+
+          <div class="box-highlight" style="background: #eff6ff; border-left-color: #2563eb">
+            <strong>Regra de Ouro:</strong> "Primeiro funciona no orgânico, depois você investe para escalar."
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOOLS REINFORCEMENT -->
+    <section class="card">
+      <div class="section-header">
+        <div class="section-icon">🛠️</div>
+        <h2>Ferramentas Essenciais</h2>
+      </div>
+      <div class="grid-3">
+        <div>
+          <h5>🎥 Para Vídeo</h5>
+          <div class="checklist-item">✅ CapCut</div>
+          <div class="checklist-item">✅ InShot</div>
+        </div>
+        <div>
+          <h5>📸 Para Fotos</h5>
+          <div class="checklist-item">✅ Lightroom</div>
+          <div class="checklist-item">✅ Snapseed</div>
+        </div>
+        <div>
+          <h5>🎨 Para Criativos</h5>
+          <div class="checklist-item">✅ Canva</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ALERTS & GOALS -->
+    <div class="grid-2">
+      <!-- O que evitar -->
+      <div class="box-alert">
+        <h4 style="color: #991b1b; margin-bottom: 1rem">🚫 O que EVITAR</h4>
+        <ul style="margin-bottom: 0">
+          <li>Venda agressiva todos os dias (cansa)</li>
+          <li>Escassez falsa (perde credibilidade)</li>
+          <li>CTAs confusos (muitas ordens juntas)</li>
+          <li>Foco apenas no preço (atrai cliente errado)</li>
+        </ul>
+      </div>
+
+      <!-- Meta -->
+      <div class="box-success">
+        <h4 style="color: #166534; margin-bottom: 1rem">🏁 Meta da Fase</h4>
+        <ul style="margin-bottom: 0">
+          <li>Previsibilidade nas vendas</li>
+          <li>Conversão mais constante</li>
+          <li>Menos dependência de viralização</li>
+          <li>Faturamento consistente</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- META INFO & MINDSET -->
+    <div class="box-blue" style="margin-top: 2rem; text-align: center">
+      <h3 style="color: #1e40af">💡 Foco Real dessa Fase</h3>
+      <p style="font-size: 1.1rem; max-width: 800px; margin: 0 auto">
+        Não é vender tudo de uma vez. É criar uma <strong>rotina de vendas</strong> previsível e escalável,<br>
+        diminuindo a dependência da sorte ou de um post viral.
+      </p>
+    </div>
+
+    <div style="text-align: center; margin: 3rem 0">
+      <h2 class="gradient-text" style="font-size: 2rem">"Venda não acontece no grito,<br>acontece na confiança."</h2>
+    </div>
+
+    <!-- MOTIVATIONAL CLOSING -->
+    <div style="
+        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        padding: 2rem;
+        border-radius: var(--radius-lg);
+        border: 1px solid #bbf7d0;
+        text-align: center;
+        margin-bottom: 3rem;
+      ">
+      <p style="font-size: 1.1rem; color: #166534; margin-bottom: 1.5rem">
+        "Tudo isso é aplicado aos poucos, respeitando o ritmo do negócio e do Meta."
+      </p>
+      <div class="grid-2" style="max-width: 600px; margin: 0 auto; text-align: left">
+        <div class="checklist-item" style="background: white">✅ Não precisa fazer tudo de uma vez</div>
+        <div class="checklist-item" style="background: white">✅ Ajustes são graduais</div>
+        <div class="checklist-item" style="background: white">✅ Constância vence perfeição</div>
+        <div class="checklist-item" style="background: white">✅ Crescimento vem do processo</div>
+      </div>
+    </div>
+
+    <!-- CELEBRATION -->
+    <div class="box-celebration">
+      <h2 style="color: white; margin-bottom: 1rem">🎉 Você completou o Método DigitalDM!</h2>
+      <p style="font-size: 1.2rem; margin-bottom: 2rem">
+        Agora você tem um perfil organizado, conteúdo que conecta e um sistema de vendas consistente.<br>
+        Continue aplicando e ajustando. Os resultados são inevitáveis!
+      </p>
+      <div style="font-weight: 700; font-size: 1.5rem">🚀</div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer-cta">
+      <h3>Próximos Passos</h3>
+      <p>Mantenha a consistência e acompanhe seus resultados.</p>
+
+      <div>
+        <a href="https://www.genspark.ai/api/files/s/1EByWvJv#" class="btn-outline">← Voltar para Mapa Mental</a>
+        <a href="https://www.genspark.ai/api/files/s/1EByWvJv#" class="btn-primary">Acessar Calendário Sazonal</a>
+        <a href="https://www.genspark.ai/api/files/s/1EByWvJv#" class="btn-outline">Ver Dashboard de Métricas</a>
+      </div>
+
+      <div class="slogan-footer">
+        <p style="font-weight: 600">DigitalDM</p>
+        <p>"Não tenha medo de falhar, tenha medo de não tentar!"</p>
+        <p style="font-size: 0.8rem">Realizando sonhos desde 2010</p>
+      </div>
+    </footer>
+  <script defer="" src="./fase3_files/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;rayId&quot;:&quot;9afe0c5eea4b5692&quot;,&quot;serverTiming&quot;:{&quot;name&quot;:{&quot;cfExtPri&quot;:true,&quot;cfEdge&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfL4&quot;:true,&quot;cfSpeedBrain&quot;:true,&quot;cfCacheStatus&quot;:true}},&quot;version&quot;:&quot;2025.9.1&quot;,&quot;token&quot;:&quot;4edd5f8ec12a48cfa682ab8261b80a79&quot;}" crossorigin="anonymous"></script>
+
+
+</body></html>
