@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)https://www.genspark.ai/api/files/s/dLEXU8t2 -->
+<html lang="pt-BR" data-theme="light"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fase 2 - Engajamento e Desejo | DigitalDM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="./fase2_files/css2" rel="stylesheet">
+    <link rel="stylesheet" href="./fase2_files/pico.min.css">
+    <style>
+      :root {
+        --primary: #f59e0b;
+        --primary-hover: #d97706;
+        --secondary: #fb923c;
+        --accent: #ec4899;
+        --success: #10b981;
+        --warning: #f59e0b;
+        --bg-body: #f8fafc;
+        --surface: #ffffff;
+        --text-main: #0f172a;
+        --text-muted: #64748b;
+        --gradient-primary: linear-gradient(135deg, #f59e0b 0%, #fb923c 100%);
+        --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px -1px rgba(245, 158, 11, 0.1), 0 2px 4px -1px rgba(245, 158, 11, 0.06);
+        --shadow-lg: 0 10px 15px -3px rgba(245, 158, 11, 0.1), 0 4px 6px -2px rgba(245, 158, 11, 0.05);
+        --radius-lg: 16px;
+        --radius-xl: 24px;
+      }
+
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        line-height: 1.6;
+      }
+
+      /* Typography */
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        color: var(--text-main);
+        font-weight: 700;
+        letter-spacing: -0.025em;
+      }
+
+      .gradient-text {
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* Utilities */
+      .card {
+        background: var(--surface);
+        border-radius: var(--radius-lg);
+        padding: 2rem;
+        box-shadow: var(--shadow-md);
+        border: 1px solid rgba(226, 232, 240, 0.6);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+        margin-bottom: 2rem;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+
+      /* Header Hero */
+      .hero {
+        text-align: center;
+        padding: 4rem 2rem;
+        margin-bottom: 3rem;
+        background: white;
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-lg);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 6px;
+        background: var(--gradient-primary);
+      }
+
+      .badge-pulse {
+        background: rgba(245, 158, 11, 0.1);
+        color: var(--primary);
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        display: inline-block;
+        margin-bottom: 1.5rem;
+        border: 1px solid rgba(245, 158, 11, 0.2);
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4);
+        }
+        70% {
+          box-shadow: 0 0 0 10px rgba(245, 158, 11, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
+        }
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 0.5rem;
+        line-height: 1.1;
+      }
+
+      .hero p.subtitle {
+        font-size: 1.25rem;
+        color: var(--text-muted);
+        margin-bottom: 2rem;
+      }
+
+      .hero-quote {
+        background: linear-gradient(to right, #fff7ed, #ffedd5);
+        padding: 1rem 2rem;
+        border-radius: var(--radius-lg);
+        display: inline-block;
+        font-style: italic;
+        color: var(--primary);
+        font-weight: 600;
+        border: 1px solid #fed7aa;
+      }
+
+      /* Progress Bar */
+      .progress-container {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 4rem;
+        position: relative;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .progress-container::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: #e2e8f0;
+        z-index: 0;
+        transform: translateY(-50%);
+      }
+      .progress-step {
+        position: relative;
+        z-index: 1;
+        background: white;
+        padding: 0 1rem;
+        text-align: center;
+      }
+      .step-circle {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        margin: 0 auto 0.5rem;
+        background: #e2e8f0;
+        color: var(--text-muted);
+        border: 2px solid #e2e8f0;
+      }
+      .step-active .step-circle {
+        background: var(--primary);
+        color: white;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.2);
+      }
+      .step-completed .step-circle {
+        background: #94a3b8;
+        color: white;
+        border-color: #94a3b8;
+      }
+      .step-label {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--text-muted);
+      }
+      .step-active .step-label {
+        color: var(--primary);
+      }
+
+      /* Sections */
+      .section-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+      .section-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: #fff7ed;
+        color: var(--primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+      }
+
+      /* Pills & Boxes */
+      .box-highlight {
+        background: #fff7ed;
+        border-left: 4px solid var(--primary);
+        padding: 1.5rem;
+        border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+        margin: 1rem 0;
+      }
+
+      .box-blue {
+        background: #eff6ff;
+        border: 1px solid #bfdbfe;
+        color: #1e40af;
+        padding: 1.5rem;
+        border-radius: var(--radius-lg);
+      }
+
+      .box-success {
+        background: #f0fdf4;
+        border: 1px solid #bbf7d0;
+        color: #166534;
+        padding: 1.5rem;
+        border-radius: var(--radius-lg);
+      }
+
+      .box-alert {
+        background: #fef2f2;
+        border: 1px solid #fecaca;
+        color: #991b1b;
+        padding: 1.5rem;
+        border-radius: var(--radius-lg);
+      }
+
+      /* Checklist */
+      .checklist-item {
+        background: #f8fafc;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 0.5rem;
+        border: 1px solid #e2e8f0;
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+      .checklist-item input[type='checkbox'] {
+        width: 1.2rem;
+        height: 1.2rem;
+        margin-top: 0.2rem;
+        accent-color: var(--primary);
+      }
+
+      /* Pillars */
+      .pillar-card {
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: var(--radius-lg);
+        padding: 2rem;
+        position: relative;
+        overflow: hidden;
+        height: 100%;
+      }
+      .pillar-card::top {
+        height: 4px;
+        background: var(--gradient-primary);
+      }
+      .pillar-number {
+        font-size: 4rem;
+        font-weight: 800;
+        color: #f1f5f9;
+        position: absolute;
+        top: -10px;
+        right: 10px;
+        line-height: 1;
+      }
+
+      /* Footer */
+      .footer-cta {
+        text-align: center;
+        margin-top: 4rem;
+        padding: 3rem;
+        background: var(--surface);
+        border-radius: var(--radius-xl);
+        border: 2px solid #e2e8f0;
+      }
+
+      .btn-primary {
+        background: var(--gradient-primary);
+        border: none;
+        padding: 1rem 2.5rem;
+        font-size: 1.1rem;
+        border-radius: 50px;
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 1rem;
+      }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px -5px rgba(245, 158, 11, 0.4);
+      }
+
+      .slogan-footer {
+        color: var(--text-muted);
+        margin-top: 2rem;
+        font-size: 0.9rem;
+        border-top: 1px solid #e2e8f0;
+        padding-top: 2rem;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+        .grid-2,
+        .grid-3 {
+          grid-template-columns: 1fr;
+        }
+        .progress-container {
+          max-width: 100%;
+          font-size: 0.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HERO HEADER -->
+    <header class="hero">
+      <div class="badge-pulse">30 a 60 DIAS</div>
+      <h1>FASE 2 - <span class="gradient-text">ENGAJAMENTO</span> E DESEJO</h1>
+      <p class="subtitle">Método DigitalDM para Instagram de Moda</p>
+
+      <div class="hero-quote">"Desde 2010 realizando sonhos se tornarem realidade."</div>
+    </header>
+
+    <!-- PROGRESS BAR -->
+    <div class="progress-container">
+      <div class="progress-step step-completed">
+        <div class="step-circle">✓</div>
+        <div class="step-label">Fase 1<br>Fundamento</div>
+      </div>
+      <div class="progress-step step-active">
+        <div class="step-circle">2</div>
+        <div class="step-label">Fase 2<br>Engajamento</div>
+      </div>
+      <div class="progress-step">
+        <div class="step-circle">3</div>
+        <div class="step-label">Fase 3<br>Venda</div>
+      </div>
+    </div>
+
+    <!-- CONTEXT -->
+    <section class="card">
+      <div class="section-header">
+        <div class="section-icon">🎯</div>
+        <h2>Contextualização</h2>
+      </div>
+      <p>
+        <strong>Objetivo Principal:</strong> Fazer o público comentar, salvar e responder stories. Criar conexão real.
+      </p>
+      <div class="box-highlight">
+        <strong>O que essa fase resolve:</strong>
+        <ul style="margin-bottom: 0; margin-top: 0.5rem">
+          <li>Vídeos com muitas visualizações, mas sem conversão em venda.</li>
+          <li>Seguidores "frios" que assistem mas não interagem.</li>
+          <li>Stories ignorados ou pulados rapidamente.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3 PILLARS -->
+    <h3 style="text-align: center; margin-bottom: 2rem">Os 3 Pilares do Engajamento</h3>
+    <div class="grid-3">
+      <!-- Pilar 1 -->
+      <article class="pillar-card">
+        <div class="pillar-number">1</div>
+        <h4>Mudar o Foco</h4>
+        <p style="color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; font-weight: 600">
+          De Peça → Para Benefício
+        </p>
+        <p>Pare de vender apenas o produto. Venda o que ele faz pelo corpo da cliente.</p>
+        <div style="background: #f8fafc; padding: 1rem; border-radius: 8px; font-size: 0.9rem">
+          <p style="margin-bottom: 0.5rem">❌ "Vestido P ao G"</p>
+          <p style="margin-bottom: 0">✅ "Esse vestido valoriza o corpo e não marca nada."</p>
+        </div>
+        <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--primary); font-weight: 600">
+          Isso ativa o cérebro de decisão.
+        </p>
+      </article>
+
+      <!-- Pilar 2 -->
+      <article class="pillar-card">
+        <div class="pillar-number">2</div>
+        <h4>Stories = Conversa</h4>
+        <p style="color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; font-weight: 600">
+          Atendimento de Loja
+        </p>
+        <p>Stories não são catálogo. São conversa de vendedora experiente.</p>
+        <ul style="font-size: 0.9rem">
+          <li>"Esse aqui é o que mais sai..."</li>
+          <li>"Pra quem ama conforto..."</li>
+        </ul>
+        <p style="font-weight: 600">Sempre finalize com CTA:</p>
+        <em style="color: var(--text-muted)">"Responde aqui", "Me chama no Whats"</em>
+      </article>
+
+      <!-- Pilar 3 -->
+      <article class="pillar-card">
+        <div class="pillar-number">3</div>
+        <h4>Prova Social</h4>
+        <p style="color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; font-weight: 600">
+          Obrigatório
+        </p>
+        <p>Pessoas compram onde outras pessoas já compraram.</p>
+        <div class="checklist-item">📸 Clientes reais</div>
+        <div class="checklist-item">💬 Prints de WhatsApp</div>
+        <div class="checklist-item">✨ Antes e depois</div>
+      </article>
+    </div>
+
+    <!-- IDEAS & PRACTICES -->
+    <section class="card" style="margin-top: 3rem">
+      <div class="section-header">
+        <div class="section-icon">💡</div>
+        <h2>Ideias Práticas</h2>
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <h4>🪝 Ganchos (Primeiros 2s)</h4>
+          <p style="font-size: 0.9rem; color: var(--text-muted)">Diga a frase antes de mostrar o look completo.</p>
+          <div class="checklist-item">"Se você acha que vestido não valoriza, olha esse..."</div>
+          <div class="checklist-item">"Esse look salvou várias clientes essa semana."</div>
+          <div class="checklist-item">"Esse aqui engana no corpo, no bom sentido!"</div>
+          <div class="checklist-item">"Pra quem quer se sentir arrumada sem esforço."</div>
+        </div>
+
+        <div>
+          <h4>📹 Formatos de Conexão</h4>
+          <div class="checklist-item"><strong>Prova Rápida:</strong> 1 peça + 2 movimentos + 1 benefício falado.</div>
+          <div class="checklist-item">
+            <strong>Bastidor:</strong> Chegada de mercadoria ou arrumando arara (humaniza).
+          </div>
+          <div class="checklist-item"><strong>POV:</strong> "POV: você entrou só pra olhar e saiu apaixonada".</div>
+        </div>
+      </div>
+
+      <hr style="margin: 2rem 0; border-top: 1px solid #e2e8f0">
+
+      <div class="grid-2">
+        <div>
+          <h4>📝 Legendas que Puxam Ação</h4>
+          <p>Sempre finalize com uma pergunta ou direção simples.</p>
+          <div style="background: #fff7ed; padding: 1rem; border-radius: 8px">
+            <p>✅ "Qual cor você escolheria?"</p>
+            <p>✅ "Usaria pra festa ou jantar?"</p>
+            <p>✅ "Salva esse look pra não esquecer"</p>
+          </div>
+        </div>
+
+        <div>
+          <h4>💬 Stories que Geram Resposta</h4>
+          <p>Use a sequência de 3 passos:</p>
+          <ol>
+            <li>Mostrar a peça</li>
+            <li>Falar um benefício real</li>
+            <li>Pergunta direta ("Dia ou noite?")</li>
+          </ol>
+          <div class="box-highlight" style="padding: 0.8rem; font-size: 0.9rem">
+            📌 <strong>Dica:</strong> Quanto mais resposta, mais o Instagram entrega seus próximos stories.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHECKLIST -->
+    <section class="card">
+      <div class="section-header">
+        <div class="section-icon">✅</div>
+        <h2>Checklist da Fase 2</h2>
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <h5 style="color: var(--primary)">Reels &amp; Feed</h5>
+          <div class="checklist-item"><input type="checkbox"> Gancho claro nos primeiros 2 segundos</div>
+          <div class="checklist-item"><input type="checkbox"> Frase focada em resolver um problema</div>
+          <div class="checklist-item"><input type="checkbox"> Variar formatos (Bastidor, POV, Conversa)</div>
+          <div class="checklist-item"><input type="checkbox"> Legenda sempre com pergunta final</div>
+        </div>
+        <div>
+          <h5 style="color: var(--primary)">Stories &amp; Interação</h5>
+          <div class="checklist-item"><input type="checkbox"> Postar todos os dias (Atendimento)</div>
+          <div class="checklist-item"><input type="checkbox"> Usar enquetes simples ("Qual você prefere?")</div>
+          <div class="checklist-item"><input type="checkbox"> Mostrar prova social (cliente ou print)</div>
+          <div class="checklist-item"><input type="checkbox"> Responder todo mundo que interagir</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ALERTS & GOALS -->
+    <div class="grid-2">
+      <!-- O que evitar -->
+      <div class="box-alert">
+        <h4 style="color: #991b1b; margin-bottom: 1rem">🚫 O que EVITAR</h4>
+        <ul style="margin-bottom: 0">
+          <li>Postar sem intenção de engajamento</li>
+          <li>Legendas frias e técnicas</li>
+          <li>Stories sem interação (monólogo)</li>
+          <li>Copiar formatos que não combinam com a marca</li>
+        </ul>
+      </div>
+
+      <!-- Meta -->
+      <div class="box-success">
+        <h4 style="color: #166534; margin-bottom: 1rem">🏁 Meta da Fase</h4>
+        <ul style="margin-bottom: 0">
+          <li>Mais comentários nos posts</li>
+          <li>Mais respostas via Direct/Stories</li>
+          <li>Aumento de seguidores orgânicos</li>
+          <li>Público que interage e conversa</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- META INFO & MINDSET -->
+    <div class="box-blue" style="margin-top: 2rem; text-align: center">
+      <h3 style="color: #1e40af">💡 Foco Real dessa Fase</h3>
+      <p style="font-size: 1.1rem; max-width: 800px; margin: 0 auto">
+        Não é empurrar a venda a todo custo. É fazer o público pensar: <br>
+        <strong>"Essa loja me entende."</strong><br>
+        Quando isso acontece, os directs e as vendas aumentam naturalmente.
+      </p>
+    </div>
+
+    <div style="text-align: center; margin: 3rem 0">
+      <h2 class="gradient-text" style="font-size: 2rem">"Engajamento não vem de perfeição,<br>vem de conversa."</h2>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer-cta">
+      <h3>Pronto para converter essa atenção em vendas?</h3>
+      <p>Depois de criar desejo e conexão, vamos para a escala.</p>
+      <a href="https://www.genspark.ai/api/files/s/dLEXU8t2#" class="btn-primary">Avançar para Fase 3 →</a>
+
+      <div class="slogan-footer">
+        <p style="font-weight: 600">DigitalDM</p>
+        <p>"Não tenha medo de falhar, tenha medo de não tentar!"</p>
+        <p style="font-size: 0.8rem">Realizando sonhos desde 2010</p>
+      </div>
+    </footer>
+  <script defer="" src="./fase2_files/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;rayId&quot;:&quot;9afe0c5b4eab5692&quot;,&quot;serverTiming&quot;:{&quot;name&quot;:{&quot;cfExtPri&quot;:true,&quot;cfEdge&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfL4&quot;:true,&quot;cfSpeedBrain&quot;:true,&quot;cfCacheStatus&quot;:true}},&quot;version&quot;:&quot;2025.9.1&quot;,&quot;token&quot;:&quot;4edd5f8ec12a48cfa682ab8261b80a79&quot;}" crossorigin="anonymous"></script>
+
+
+</body></html>
