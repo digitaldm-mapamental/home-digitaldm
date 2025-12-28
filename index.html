@@ -1,64 +1,31 @@
 <!DOCTYPE html>
-<html lang="pt-BR" data-theme="light" style=""><head>
-<meta charset="utf-8">
-<meta content="width=1280, height=720, initial-scale=1.0" name="viewport">
+
+<html data-theme="light" lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Home - Método DigitalDM</title>
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Lato:wght@300;400;700&amp;display=swap" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Lato:wght@300;400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
 <style>
         body {
             font-family: 'Lato', sans-serif;
             background-color: #F9F9F7;
             color: #1A1A1A;
-            overflow: hidden;
+            overflow-x: hidden;
             margin: 0;
             padding: 0;
-            width: 1280px;
-            height: 720px;
+            width: 100%;
+            min-height: 100vh;
         }
         .font-editorial {
             font-family: 'Playfair Display', serif;
-        }
-        .scrolling-container {
-            height: 100%;
-            overflow-y: auto;
-            scroll-behavior: smooth;
-            padding-right: 4px;
-        }
-        .scrolling-container::-webkit-scrollbar {
-            width: 6px;
-        }
-        .scrolling-container::-webkit-scrollbar-track {
-            background: #F1F1F1;
-        }
-        .scrolling-container::-webkit-scrollbar-thumb {
-            background: #D8B4E2;
-            border-radius: 3px;
-        }
-        .scrolling-container::-webkit-scrollbar-thumb:hover {
-            background: #C084D0;
         }
         .hero-image {
             background-image: url("https://page.gensparksite.com/slides_images/abd6bb9b0d4b510c90e415782d13fb4f.webp");
             background-size: cover;
             background-position: center 20%;
-        }
-        .funnel-step {
-            position: relative;
-        }
-        .funnel-step::after {
-            content: '';
-            position: absolute;
-            right: -15px;
-            top: 50%;
-            transform: translateY(-50%);
-            border-left: 6px solid #D1D5DB;
-            border-top: 5px solid transparent;
-            border-bottom: 5px solid transparent;
-        }
-        .funnel-step:last-child::after {
-            display: none;
         }
         .hero-badge {
             letter-spacing: 0.25em;
@@ -66,157 +33,217 @@
             font-size: 0.75rem;
             font-weight: 800;
         }
-        /* New Process Step Connector */
-        .process-step {
+        
+        /* Funnel Step Styles */
+        .funnel-step {
             position: relative;
         }
-        .process-step:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            top: 2rem;
-            right: -50%;
-            width: 100%;
-            height: 2px;
-            background-color: #E5E7EB;
-            z-index: 0;
+        /* Desktop Arrows */
+        @media (min-width: 768px) {
+            .funnel-step::after {
+                content: '';
+                position: absolute;
+                right: -15px;
+                top: 50%;
+                transform: translateY(-50%);
+                border-left: 6px solid #D1D5DB;
+                border-top: 5px solid transparent;
+                border-bottom: 5px solid transparent;
+                z-index: 20;
+            }
+            .funnel-step:last-child::after {
+                display: none;
+            }
+            .process-step::after {
+                content: '';
+                position: absolute;
+                top: 2.5rem; /* Adjusted for icon size */
+                right: -50%;
+                width: 100%;
+                height: 2px;
+                background-color: #E5E7EB;
+                z-index: 0;
+            }
+            .process-step:last-child::after {
+                display: none;
+            }
+        }
+        
+        /* Mobile Process/Funnel Adjustments */
+        @media (max-width: 767px) {
+            .funnel-line {
+                display: none; /* Hide horizontal line on mobile */
+            }
+            .process-step {
+                margin-bottom: 2rem;
+            }
+            .process-step::before {
+                /* Vertical line for mobile process */
+                content: '';
+                position: absolute;
+                left: 50%;
+                bottom: -2rem;
+                transform: translateX(-50%);
+                width: 2px;
+                height: 2rem;
+                background-color: #E5E7EB;
+                z-index: 0;
+            }
+            .process-step:last-child::before {
+                display: none;
+            }
+            .funnel-step {
+                margin-bottom: 1.5rem;
+                width: 100%;
+            }
+            .funnel-step::before {
+                 /* Vertical arrow/line for mobile funnel could go here, omitting for cleaner look */
+            }
         }
     </style>
 </head>
-<body class="antialiased" style="">
+<body class="antialiased">
 <!-- Progress Bar -->
-<div class="fixed top-0 left-0 w-full h-1 bg-gray-200 z-50">
-<div class="h-full bg-purple-600" style="width: 5%;"></div>
+<div class="fixed top-0 left-0 w-full h-1.5 bg-gray-200 z-50">
+<div class="h-full bg-purple-600 transition-all duration-500" style="width: 5%;"></div>
 </div>
-<!-- Main Container -->
-<div class="scrolling-container relative">
 <!-- Navigation Header -->
-<nav class="sticky top-0 z-40 bg-white border-b border-gray-100 px-8 py-3 flex justify-between items-center shadow-sm">
+<nav class="sticky top-0 z-40 bg-white border-b border-gray-100 shadow-sm">
+<div class="container mx-auto px-4 md:px-8 py-3">
+<div class="flex flex-col md:flex-row justify-between items-center gap-4">
 <div class="flex items-center gap-2">
 <span class="w-3 h-3 bg-purple-600 rounded-full"></span>
-<span class="font-editorial font-bold text-lg tracking-wide text-gray-800">Método DigitalDM </span>
+<span class="font-editorial font-bold text-lg tracking-wide text-gray-800">Método DigitalDM</span>
 </div>
-<div class="flex gap-6 text-xs font-bold tracking-widest uppercase text-gray-400">
+<div class="w-full md:w-auto overflow-x-auto pb-2 md:pb-0">
+<div class="flex gap-4 md:gap-6 text-xs font-bold tracking-widest uppercase text-gray-400 whitespace-nowrap px-1">
 <span class="text-purple-600 border-b-2 border-purple-600 pb-1">Intro</span>
-<span>Fase 1: Preparação</span>
-<span>Fase 2: Estrutura</span>
-<span>Fase 3: Lançamento</span>
-<span>Fase 4: Otimização</span>
+<span class="hover:text-purple-500 transition-colors cursor-default">Fase 1: Preparação</span>
+<span class="hover:text-purple-500 transition-colors cursor-default">Fase 2: Estrutura</span>
+<span class="hover:text-purple-500 transition-colors cursor-default">Fase 3: Lançamento</span>
+<span class="hover:text-purple-500 transition-colors cursor-default">Fase 4: Otimização</span>
 </div>
-<div class="text-xs text-gray-500 font-medium">
-<span class="bg-pink-50 text-pink-700 px-3 py-1 rounded-full uppercase tracking-wider text-[10px] font-bold">Moda Feminina 2025/2026</span></div>
+</div>
+<div class="hidden md:block text-xs text-gray-500 font-medium">
+<span class="bg-pink-50 text-pink-700 px-3 py-1 rounded-full uppercase tracking-wider text-[10px] font-bold">Moda Feminina 2025/2026</span>
+</div>
+</div>
+</div>
 </nav>
 <!-- HERO SECTION -->
-<header class="relative w-full h-[600px] flex items-center justify-center overflow-hidden">
+<header class="relative w-full min-h-[500px] md:h-[600px] flex items-center justify-center overflow-hidden">
 <div class="absolute inset-0 hero-image"></div>
 <div class="absolute inset-0 bg-white bg-opacity-60 backdrop-filter backdrop-blur-[2px]"></div>
-<div class="relative z-10 max-w-4xl mx-auto text-center px-6">
-<div class="mb-8">
+<div class="relative z-10 container mx-auto text-center px-4">
+<div class="mb-6 md:mb-8">
 <span class="inline-block py-2 px-6 border border-gray-900 text-gray-900 hero-badge bg-white shadow-md rounded-sm">
-<p class="m-0" style="color: rgb(0, 0, 0); font-size: 14px;">Exclusivo DigitalDM</p>
+<p class="m-0 text-sm">Exclusivo DigitalDM</p>
 </span>
 </div>
 <div class="mb-6">
-<h1 class="font-editorial text-5xl md:text-6xl font-bold text-gray-900 leading-tight drop-shadow-sm">
+<h1 class="font-editorial text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 leading-tight drop-shadow-sm">
 <p class="m-0">Transforme seu Instagram em</p>
 <p class="m-0 text-purple-900 italic mt-2">Máquina de Vendas</p>
 </h1>
 </div>
 <div class="mb-10 max-w-2xl mx-auto">
-<p class="text-xl md:text-2xl text-gray-800 font-medium leading-relaxed">
-                    Domine o visual e a estratégia para vender moda todos os dias.
-                </p>
+<p class="text-lg md:text-2xl text-gray-800 font-medium leading-relaxed">
+                Domine o visual e a estratégia para vender moda todos os dias.
+            </p>
 </div>
-<div class="flex flex-col items-center mt-8 opacity-80 hover:opacity-100 transition-opacity cursor-pointer">
-<p class="text-xs font-bold uppercase tracking-[0.2em] text-gray-600 mb-3" style="font-size: 16px; color: rgb(0, 0, 0);">Sua Jornada Começa Abaixo</p>
-
+<div class="flex flex-col items-center mt-8 opacity-80 hover:opacity-100 transition-opacity cursor-pointer animate-bounce">
+<p class="text-xs font-bold uppercase tracking-[0.2em] text-gray-600 mb-3">Sua Jornada Começa Abaixo</p>
+<i class="fa-solid fa-chevron-down text-gray-400"></i>
 </div>
 </div>
 </header>
-<!-- SECTION 1: CREDIBILIDADE (NEW) -->
-<section class="py-16 bg-purple-600 text-white relative overflow-hidden">
-<div class="absolute inset-0 opacity-20">
+<!-- SECTION 1: CREDIBILIDADE -->
+<section class="py-12 md:py-16 bg-purple-600 text-white relative overflow-hidden">
+<div class="absolute inset-0 opacity-20 pointer-events-none">
 <div class="absolute top-0 left-0 w-64 h-64 bg-pink-500 rounded-full filter blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
 <div class="absolute bottom-0 right-0 w-64 h-64 bg-indigo-500 rounded-full filter blur-3xl translate-x-1/2 translate-y-1/2"></div>
 </div>
-<div class="max-w-6xl mx-auto px-6 relative z-10 text-center">
-<p class="text-lg md:text-xl font-medium mb-10 text-purple-100">Sua decisão de virar o jogo começa agora. E nós estaremos com você em cada passo.</p>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="container mx-auto px-4 relative z-10 text-center">
+<p class="text-lg md:text-xl font-medium mb-10 text-purple-100 max-w-3xl mx-auto">Sua decisão de virar o jogo começa agora. E nós estaremos com você em cada passo.</p>
+<div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
 <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm rounded-xl p-6 border border-white border-opacity-20 hover:bg-opacity-20 transition-all">
-<h3 class="text-4xl font-bold mb-2">+R$100M</h3>
-<p class="text-sm font-medium text-purple-100 uppercase tracking-wider">Faturados</p>
+<h3 class="text-3xl md:text-4xl font-bold mb-2">+R$100M</h3>
+<p class="text-xs md:text-sm font-medium text-purple-100 uppercase tracking-wider">Faturados</p>
 </div>
 <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm rounded-xl p-6 border border-white border-opacity-20 hover:bg-opacity-20 transition-all">
-<h3 class="text-4xl font-bold mb-2">+1.200</h3>
-<p class="text-sm font-medium text-purple-100 uppercase tracking-wider">E-commerces</p>
+<h3 class="text-3xl md:text-4xl font-bold mb-2">+1.200</h3>
+<p class="text-xs md:text-sm font-medium text-purple-100 uppercase tracking-wider">E-commerces</p>
 </div>
 <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm rounded-xl p-6 border border-white border-opacity-20 hover:bg-opacity-20 transition-all">
-<h3 class="text-4xl font-bold mb-2">+R$10M</h3>
-<p class="text-sm font-medium text-purple-100 uppercase tracking-wider">Em Tráfego</p>
+<h3 class="text-3xl md:text-4xl font-bold mb-2">+R$10M</h3>
+<p class="text-xs md:text-sm font-medium text-purple-100 uppercase tracking-wider">Em Tráfego</p>
 </div>
 <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm rounded-xl p-6 border border-white border-opacity-20 hover:bg-opacity-20 transition-all">
-<h3 class="text-4xl font-bold mb-2">15 Anos</h3>
-<p class="text-sm font-medium text-purple-100 uppercase tracking-wider">Experiência</p>
+<h3 class="text-3xl md:text-4xl font-bold mb-2">15 Anos</h3>
+<p class="text-xs md:text-sm font-medium text-purple-100 uppercase tracking-wider">Experiência</p>
 </div>
 </div>
 </div>
 </section>
-<!-- SECTION 2: MOTIVACIONAL (NEW) -->
-<section class="py-20 bg-white">
-<div class="max-w-4xl mx-auto px-6 text-center">
+<!-- SECTION 2: MOTIVACIONAL -->
+<section class="py-16 md:py-20 bg-white">
+<div class="container mx-auto px-4 text-center max-w-4xl">
 <div class="mb-8">
-<h2 class="font-editorial text-4xl md:text-5xl font-bold text-gray-900 mb-4">Você acaba de dar o passo mais importante... <i class="fa-solid fa-rocket text-pink-500 ml-2"></i></h2>
-<p class="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
-                    Este não é apenas mais um curso ou PDF. Este é um <strong class="text-purple-700">GUIA PRÁTICO DE IMPLEMENTAÇÃO</strong>.
-                </p>
+<h2 class="font-editorial text-3xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+                Você acaba de dar o passo mais importante... <i class="fa-solid fa-rocket text-pink-500 ml-2 text-3xl md:text-4xl"></i>
+</h2>
+<p class="text-lg md:text-xl text-gray-600 leading-relaxed mt-6">
+                Este não é apenas mais um curso ou PDF. Este é um <strong class="text-purple-700">GUIA PRÁTICO DE IMPLEMENTAÇÃO</strong>.
+            </p>
 </div>
 <div class="mb-10 max-w-3xl mx-auto">
 <p class="text-gray-600 leading-relaxed mb-6">
-                    Essas orientações foram testadas e validadas por mais de 1.200 lojistas reais, como você, que buscavam não apenas likes, mas vendas reais e previsíveis. Estamos aqui para segurar sua mão e mostrar exatamente o que fazer, sem "achismos".
-                </p>
+                Essas orientações foram testadas e validadas por mais de 1.200 lojistas reais, como você, que buscavam não apenas likes, mas vendas reais e previsíveis. Estamos aqui para segurar sua mão e mostrar exatamente o que fazer, sem "achismos".
+            </p>
 </div>
-<div class="inline-flex items-center gap-2 bg-green-50 text-green-700 px-6 py-3 rounded-full border border-green-100 shadow-sm">
+<div class="inline-flex flex-col md:flex-row items-center gap-2 bg-green-50 text-green-700 px-6 py-3 rounded-full border border-green-100 shadow-sm">
 <i class="fa-solid fa-square-check text-green-500"></i>
-<span class="font-bold">Método Validado por +1.200 Lojistas</span>
+<span class="font-bold text-sm md:text-base">Método Validado por +1.200 Lojistas</span>
 </div>
-<div class="mt-12 bg-white border-2 border-purple-100 rounded-full px-8 py-4 shadow-lg inline-block transform -rotate-1 hover:rotate-0 transition-transform">
-<p class="text-xl font-bold text-purple-800 italic font-editorial">"Não tenha medo de falhar, tenha medo de não tentar!"</p>
+<div class="mt-12 bg-white border-2 border-purple-100 rounded-full px-6 py-4 md:px-8 shadow-lg inline-block transform -rotate-1 hover:rotate-0 transition-transform">
+<p class="text-lg md:text-xl font-bold text-purple-800 italic font-editorial">"Não tenha medo de falhar, tenha medo de não tentar!"</p>
 </div>
 </div>
 </section>
-<!-- SECTION 3: COMO FUNCIONA (NEW) -->
-<section class="py-20 bg-gray-50">
-<div class="max-w-6xl mx-auto px-6">
+<!-- SECTION 3: COMO FUNCIONA -->
+<section class="py-16 md:py-20 bg-gray-50 overflow-hidden">
+<div class="container mx-auto px-4 max-w-6xl">
 <div class="text-center mb-16">
 <h2 class="font-editorial text-3xl md:text-4xl font-bold text-gray-900">Como Funciona o Método?</h2>
 </div>
-<div class="flex flex-col md:flex-row justify-between items-start gap-8 relative px-4 md:px-12">
+<div class="flex flex-col md:flex-row justify-between items-start gap-8 md:gap-4 relative">
 <!-- Step 1 -->
-<div class="flex-1 text-center relative z-10 process-step">
-<div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-white shadow-md">
+<div class="flex-1 text-center relative z-10 process-step w-full">
+<div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-white shadow-md z-10 relative">
 <i class="fa-solid fa-house text-2xl text-blue-600"></i>
 </div>
 <h3 class="text-xl font-bold text-gray-900 mb-2">1. Você está Aqui</h3>
 <p class="text-sm text-gray-600 leading-relaxed px-2">Entendendo a visão geral e se preparando para a transformação.</p>
 </div>
 <!-- Step 2 -->
-<div class="flex-1 text-center relative z-10 process-step">
-<div class="w-20 h-20 bg-white border-2 border-red-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-md">
+<div class="flex-1 text-center relative z-10 process-step w-full">
+<div class="w-20 h-20 bg-white border-2 border-red-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-md z-10 relative">
 <i class="fa-solid fa-phone text-2xl text-red-500"></i>
 </div>
 <h3 class="text-xl font-bold text-gray-900 mb-2">2. Contate o Gestor</h3>
 <p class="text-sm text-gray-600 leading-relaxed px-2">Chame seu gestor no WhatsApp para liberar o acesso à Fase 1.</p>
 </div>
 <!-- Step 3 -->
-<div class="flex-1 text-center relative z-10 process-step">
-<div class="w-20 h-20 bg-white border-2 border-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-md">
+<div class="flex-1 text-center relative z-10 process-step w-full">
+<div class="w-20 h-20 bg-white border-2 border-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-md z-10 relative">
 <i class="fa-solid fa-book text-2xl text-blue-500"></i>
 </div>
 <h3 class="text-xl font-bold text-gray-900 mb-2">3. Execute a Fase 1</h3>
 <p class="text-sm text-gray-600 leading-relaxed px-2">Aplique os fundamentos. Ao concluir, seu gestor libera a Fase 2.</p>
 </div>
 <!-- Step 4 -->
-<div class="flex-1 text-center relative z-10">
-<div class="w-20 h-20 bg-white border-2 border-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-md">
+<div class="flex-1 text-center relative z-10 w-full">
+<div class="w-20 h-20 bg-white border-2 border-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-md z-10 relative">
 <i class="fa-solid fa-rocket text-2xl text-yellow-500"></i>
 </div>
 <h3 class="text-xl font-bold text-gray-900 mb-2">4. Evolução Contínua</h3>
@@ -225,91 +252,85 @@
 </div>
 </div>
 </section>
-<!-- SECTION 4: POR QUE FUNCIONA (NEW) -->
-<section class="py-20 bg-white">
-<div class="max-w-5xl mx-auto px-6 text-center">
+<!-- SECTION 4: POR QUE FUNCIONA -->
+<section class="py-16 md:py-20 bg-white">
+<div class="container mx-auto px-4 max-w-5xl text-center">
 <h2 class="font-editorial text-3xl md:text-4xl font-bold text-gray-900 mb-12">Por Que Esse Método Funciona?</h2>
 <div class="flex flex-wrap justify-center gap-4 mb-10">
 <div class="flex items-center gap-2 bg-green-50 text-green-800 px-5 py-2 rounded-lg border border-green-100">
 <i class="fa-solid fa-check-square text-green-500 text-lg"></i>
-<span class="font-bold text-lg">Testado</span>
+<span class="font-bold text-base md:text-lg">Testado</span>
 </div>
 <div class="flex items-center gap-2 bg-green-50 text-green-800 px-5 py-2 rounded-lg border border-green-100">
 <i class="fa-solid fa-check-square text-green-500 text-lg"></i>
-<span class="font-bold text-lg">Prático</span>
+<span class="font-bold text-base md:text-lg">Prático</span>
 </div>
 <div class="flex items-center gap-2 bg-green-50 text-green-800 px-5 py-2 rounded-lg border border-green-100">
 <i class="fa-solid fa-check-square text-green-500 text-lg"></i>
-<span class="font-bold text-lg">Adaptável</span>
+<span class="font-bold text-base md:text-lg">Adaptável</span>
 </div>
 <div class="flex items-center gap-2 bg-green-50 text-green-800 px-5 py-2 rounded-lg border border-green-100">
 <i class="fa-solid fa-check-square text-green-500 text-lg"></i>
-<span class="font-bold text-lg">Suporte Real</span>
+<span class="font-bold text-base md:text-lg">Suporte Real</span>
 </div>
 </div>
-<p class="text-gray-600 text-lg max-w-3xl mx-auto">
-                +1.200 lojistas já validaram esse caminho. Não é sobre sorte ou viralizar, é sobre constância e estratégia certa.
-            </p>
+<p class="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
+            +1.200 lojistas já validaram esse caminho. Não é sobre sorte ou viralizar, é sobre constância e estratégia certa.
+        </p>
 </div>
 </section>
-<!-- SECTION 5: GESTOR DIGITALDM (NEW) -->
-<section class="py-20 bg-[#F3F4F6]">
-<div class="max-w-4xl mx-auto px-6">
-<h3 class="text-2xl font-bold text-blue-500 mb-1">Seu Gestor(a) DigitalDM</h3>
-<p class="text-gray-500 mb-8 text-sm">Parceiro(a) de Sucesso do Cliente</p>
-<div class="bg-white rounded-2xl p-8 shadow-sm flex flex-col md:flex-row gap-8 items-start border border-gray-100 relative">
+<!-- SECTION 5: GESTOR DIGITALDM -->
+<section class="py-16 md:py-20 bg-[#F3F4F6]">
+<div class="container mx-auto px-4 max-w-4xl">
+<h3 class="text-2xl font-bold text-blue-500 mb-1 text-center md:text-left">Seu Gestor(a) DigitalDM</h3>
+<p class="text-gray-500 mb-8 text-sm text-center md:text-left">Parceiro(a) de Sucesso do Cliente</p>
+<div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm flex flex-col md:flex-row gap-8 items-center md:items-start border border-gray-100">
 <div class="w-full md:w-auto flex justify-center">
 <div class="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center border-4 border-white shadow-md">
 <i class="fa-solid fa-user text-4xl text-gray-500"></i>
 </div>
 </div>
-<div class="flex-1 relative">
-
-<div class="space-y-4 text-gray-700">
-<p class="font-bold text-purple-700 italic">"Olá! Que alegria ter você aqui! <i class="fa-solid fa-heart"></i>"</p>
-<p style="position: relative; transform: translate(-2.70931px, 18.9652px);">Estou aqui para caminhar ao seu lado em cada etapa dessa transformação. Você não está sozinho(a) nessa jornada — estamos juntos!</p>
-<p class="font-bold bg-blue-50 inline-block px-1" style="font-size: 22px; position: relative; transform: translate(-2.70931px, 32.5118px);">Não hesite em chamar no grupo. Vamos realizar esse processo juntos, sem pressa, mas com propósito.</p>
-<p><br></p>
-</div>
-<div class="mt-8">
-
-</div>
+<div class="flex-1 space-y-4 text-gray-700 text-center md:text-left">
+<p class="font-bold text-purple-700 italic text-lg">"Olá! Que alegria ter você aqui! <i class="fa-solid fa-heart"></i>"</p>
+<p>Estou aqui para caminhar ao seu lado em cada etapa dessa transformação. Você não está sozinho(a) nessa jornada — estamos juntos!</p>
+<p class="font-bold bg-blue-50 inline-block px-2 py-1 rounded text-lg">Não hesite em chamar no grupo. Vamos realizar esse processo juntos, sem pressa, mas com propósito.</p>
 </div>
 </div>
 </div>
 </section>
 <!-- SECTION ORIGINAL 2: O NOVO JOGO DA MODA -->
-<section class="py-20 px-12 bg-white">
-<div class="max-w-6xl mx-auto">
-<div class="text-center mb-16">
-<h2 class="font-editorial text-4xl font-bold mb-4 text-gray-900">O Novo Jogo da Moda (2025-2026)</h2>
+<section class="py-16 md:py-20 bg-white">
+<div class="container mx-auto px-4 max-w-6xl">
+<div class="text-center mb-12 md:mb-16">
+<h2 class="font-editorial text-3xl md:text-4xl font-bold mb-4 text-gray-900">O Novo Jogo da Moda (2025-2026)</h2>
 <p class="text-gray-600 text-lg max-w-2xl mx-auto">
-                    Esqueça a vitrine estática. O Método DigitalDM transforma seguidores em clientes fiéis através de um ecossistema de desejo e conversão.
-                </p>
+                Esqueça a vitrine estática. O Método DigitalDM transforma seguidores em clientes fiéis através de um ecossistema de desejo e conversão.
+            </p>
 </div>
-<!-- Funil Visual -->
-<div class="bg-gray-50 rounded-2xl p-10 border border-gray-100 shadow-sm mb-12">
-<div class="flex justify-between items-center relative">
-<div class="absolute top-1/2 left-0 w-full h-0.5 bg-gray-200 -z-10"></div>
-<div class="flex flex-col items-center bg-gray-50 px-4 z-10 funnel-step">
+<!-- Funil Visual Responsive -->
+<div class="bg-gray-50 rounded-2xl p-6 md:p-10 border border-gray-100 shadow-sm mb-12">
+<div class="flex flex-col md:flex-row justify-between items-center relative gap-8 md:gap-0">
+<!-- Horizontal Line Desktop Only -->
+<div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-200 -z-10 funnel-line"></div>
+<div class="flex flex-col items-center bg-gray-50 px-4 z-10 funnel-step w-full md:w-auto">
 <div class="w-14 h-14 rounded-full bg-white border-2 border-purple-100 flex items-center justify-center text-gray-400 mb-3 shadow-sm text-xl">
 <i class="fa-solid fa-wand-magic-sparkles"></i>
 </div>
 <span class="text-xs font-bold uppercase text-gray-500 tracking-wider">Fase 1: Preparação</span>
 </div>
-<div class="flex flex-col items-center bg-gray-50 px-4 z-10 funnel-step">
+<div class="flex flex-col items-center bg-gray-50 px-4 z-10 funnel-step w-full md:w-auto">
 <div class="w-14 h-14 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 mb-3 shadow-sm text-xl border-2 border-white">
 <i class="fa-solid fa-layer-group"></i>
 </div>
 <span class="text-xs font-bold uppercase text-purple-600 tracking-wider">Fase 2: Estrutura</span>
 </div>
-<div class="flex flex-col items-center bg-gray-50 px-4 z-10 funnel-step">
+<div class="flex flex-col items-center bg-gray-50 px-4 z-10 funnel-step w-full md:w-auto">
 <div class="w-14 h-14 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 mb-3 shadow-sm text-xl border-2 border-white">
 <i class="fa-solid fa-rocket"></i>
 </div>
 <span class="text-xs font-bold uppercase text-pink-600 tracking-wider">Fase 3: Lançamento</span>
 </div>
-<div class="flex flex-col items-center bg-gray-50 px-4 z-10">
+<div class="flex flex-col items-center bg-gray-50 px-4 z-10 w-full md:w-auto">
 <div class="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center text-green-600 mb-3 shadow-sm text-xl border-2 border-white">
 <i class="fa-solid fa-chart-line"></i>
 </div>
@@ -317,7 +338,7 @@
 </div>
 </div>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
 <div class="bg-purple-50 p-8 rounded-xl border border-purple-100">
 <h3 class="font-editorial text-2xl font-bold mb-4 text-purple-900">Para quem é este método?</h3>
 <ul class="space-y-4">
@@ -335,26 +356,26 @@
 </li>
 </ul>
 </div>
-<div class="bg-white p-10 rounded-xl border border-gray-200 shadow-sm flex flex-col justify-center items-center text-center h-full">
+<div class="bg-white p-8 md:p-10 rounded-xl border border-gray-200 shadow-sm flex flex-col justify-center items-center text-center h-full">
 <h3 class="font-editorial text-3xl font-bold mb-8 text-gray-900">Seu Compromisso</h3>
 <div class="relative w-full">
 <p class="text-gray-700 text-lg md:text-xl italic border-l-4 border-pink-400 pl-6 py-6 bg-pink-50 rounded-r-lg text-left shadow-sm leading-relaxed">
-                            "Eu me comprometo a executar cada fase com excelência. Entendo que não existem atalhos, existe método."
-                        </p>
+                        "Eu me comprometo a executar cada fase com excelência. Entendo que não existem atalhos, existe método."
+                    </p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<!-- SECTION 3 (ORIGINAL): O QUE VOCÊ VAI CONSTRUIR -->
-<section class="py-16 px-12 bg-[#F9FAFB]">
-<div class="max-w-6xl mx-auto">
+<!-- SECTION 3: O QUE VOCÊ VAI CONSTRUIR -->
+<section class="py-16 md:py-20 bg-[#F9FAFB]">
+<div class="container mx-auto px-4 max-w-6xl">
 <div class="text-center mb-10">
 <span class="bg-purple-100 text-purple-700 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">A Jornada</span>
 <h3 class="font-editorial text-3xl font-bold text-gray-900 mt-4">O Que Você Vai Construir</h3>
 <p class="text-gray-500 mt-2">Quatro pilares fundamentais que sustentam uma marca de moda lucrativa.</p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
 <div class="w-12 h-12 bg-purple-50 rounded-full flex items-center justify-center mb-4 mx-auto">
 <i class="fa-regular fa-id-card text-purple-500 text-xl"></i>
@@ -387,31 +408,27 @@
 </div>
 </section>
 <!-- SECTION 4: CONCLUSÃO DA INTRODUÇÃO -->
-<section class="py-20 px-12 bg-white mb-10">
-<div class="max-w-4xl mx-auto">
-<div class="bg-gradient-to-r from-gray-900 to-gray-800 rounded-3xl p-12 text-center text-white relative overflow-hidden shadow-2xl">
+<section class="py-16 md:py-20 bg-white mb-10">
+<div class="container mx-auto px-4 max-w-4xl">
+<div class="bg-gradient-to-r from-gray-900 to-gray-800 rounded-3xl p-8 md:p-12 text-center text-white relative overflow-hidden shadow-2xl">
 <div class="absolute top-0 right-0 w-64 h-64 bg-purple-600 rounded-full opacity-20 filter blur-3xl -mr-20 -mt-20"></div>
 <div class="absolute bottom-0 left-0 w-64 h-64 bg-pink-600 rounded-full opacity-20 filter blur-3xl -ml-20 -mb-20"></div>
 <div class="relative z-10">
 <div class="w-16 h-16 bg-white bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-6 backdrop-filter backdrop-blur-sm">
 <i class="fa-solid fa-check text-2xl text-green-400"></i>
 </div>
-<h3 class="font-editorial text-4xl font-bold mb-4">Parabéns!</h3>
-<p class="text-xl text-gray-200 mb-8 font-light">
-                        Você concluiu a Introdução e está pronta para dar o próximo passo.
-                    </p>
+<h3 class="font-editorial text-3xl md:text-4xl font-bold mb-4">Parabéns!</h3>
+<p class="text-lg md:text-xl text-gray-200 mb-8 font-light">
+                    Você concluiu a Introdução e está pronta para dar o próximo passo.
+                </p>
 <div class="bg-white bg-opacity-10 rounded-xl p-6 border border-white border-opacity-20 max-w-2xl mx-auto">
 <p class="text-sm md:text-base font-medium leading-relaxed">
-                            "Após ter lido a página e chego até aqui para desbloquear a <span style="color: rgb(209, 177, 243);"><strong>Fase 1 (Preparação)</strong></span>, entre em contato agora mesmo com seu gestor de tráfego no seu grupo no WhatsApp da DigitalDM e confirme que você está <strong>"PRONTA(O)"</strong> para iniciar."
-                        </p>
-</div>
-<div class="mt-8">
-
+                        "Após ter lido a página e chego até aqui para desbloquear a <span style="color: rgb(209, 177, 243);"><strong>Fase 1 (Preparação)</strong></span>, entre em contato agora mesmo com seu gestor de tráfego no seu grupo no WhatsApp da DigitalDM e confirme que você está <strong>"PRONTA(O)"</strong> para iniciar."
+                    </p>
 </div>
 </div>
 </div>
 </div>
 </section>
-</div>
-
-</body></html>
+</body>
+</html>
