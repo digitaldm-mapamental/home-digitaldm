@@ -1,885 +1,417 @@
 <!DOCTYPE html>
-<html lang="pt-BR" data-theme="light">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DigitalDM - Método de Transformação Instagram</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
-    <style>
-      :root {
-        --primary: #6366f1;
-        --secondary: #8b5cf6;
-        --accent: #ec4899;
-        --phase1: #3b82f6;
-        --phase2: #f59e0b;
-        --phase3: #10b981;
-        --dark: #1e293b;
-        --light: #f8fafc;
-        --gray: #64748b;
-        --gradient-main: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
-        --radius-lg: 1.5rem;
-        --radius-md: 1rem;
-        --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        --glass-bg: rgba(255, 255, 255, 0.9);
-        --glass-border: 1px solid rgba(255, 255, 255, 0.5);
-      }
-
-      body {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        background-color: var(--light);
-        color: var(--dark);
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden;
-      }
-
-      /* Hero Section */
-      .hero-section {
-        background: var(--gradient-main);
-        color: white;
-        padding: 6rem 2rem 8rem 2rem;
-        text-align: center;
-        position: relative;
-        border-bottom-left-radius: 3rem;
-        border-bottom-right-radius: 3rem;
-        margin-bottom: 4rem;
-        overflow: hidden;
-      }
-
-      .hero-section::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.15), transparent 70%);
-        pointer-events: none;
-      }
-
-      .hero-content {
-        max-width: 1000px;
-        margin: 0 auto;
-        position: relative;
-        z-index: 2;
-        animation: fadeIn 1s ease-out;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
+<html lang="pt-BR" data-theme="light" style=""><head>
+<meta charset="utf-8">
+<meta content="width=1280, height=720, initial-scale=1.0" name="viewport">
+<title>Home - Método DigitalDM</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Lato:wght@300;400;700&amp;display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #F9F9F7;
+            color: #1A1A1A;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            width: 1280px;
+            height: 720px;
         }
-        to {
-          opacity: 1;
-          transform: translateY(0);
+        .font-editorial {
+            font-family: 'Playfair Display', serif;
         }
-      }
-
-      h1 {
-        font-size: 3.5rem;
-        font-weight: 800;
-        margin-bottom: 1.5rem;
-        line-height: 1.2;
-        letter-spacing: -0.02em;
-        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        color: white;
-      }
-
-      .hero-subtitle {
-        font-size: 1.4rem;
-        margin-bottom: 3rem;
-        font-weight: 500;
-        opacity: 0.95;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
-        color: white;
-      }
-
-      .stats-container {
-        display: flex;
-        justify-content: center;
-        gap: 1.5rem;
-        flex-wrap: wrap;
-        margin-top: 3rem;
-      }
-
-      .stat-badge {
-        background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(10px);
-        padding: 1rem 1.5rem;
-        border-radius: var(--radius-md);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        transition: transform 0.3s;
-      }
-
-      .stat-badge:hover {
-        transform: translateY(-5px);
-      }
-
-      .stat-number {
-        font-size: 1.8rem;
-        font-weight: 800;
-        margin-bottom: 0.2rem;
-      }
-
-      .stat-label {
-        font-size: 0.9rem;
-        opacity: 0.9;
-        font-weight: 500;
-      }
-
-      .quote-box {
-        background: white;
-        color: var(--primary);
-        padding: 1.5rem 2.5rem;
-        border-radius: 50px;
-        font-weight: 700;
-        font-size: 1.2rem;
-        margin-top: 3rem;
-        display: inline-block;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        position: relative;
-      }
-
-      .quote-box::before {
-        content: '❝';
-        margin-right: 0.5rem;
-      }
-      .quote-box::after {
-        content: '❞';
-        margin-left: 0.5rem;
-      }
-
-      /* Container */
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 2rem;
-      }
-
-      /* Welcome Section */
-      .welcome-section {
-        background: white;
-        border-radius: var(--radius-lg);
-        padding: 4rem;
-        text-align: center;
-        box-shadow: var(--shadow-lg);
-        margin-top: -6rem;
-        position: relative;
-        z-index: 10;
-        margin-bottom: 5rem;
-      }
-
-      .welcome-title {
-        color: var(--dark);
-        font-size: 2.2rem;
-        font-weight: 800;
-        margin-bottom: 1.5rem;
-      }
-
-      .welcome-text {
-        font-size: 1.2rem;
-        line-height: 1.8;
-        color: var(--gray);
-        max-width: 800px;
-        margin: 0 auto 2rem;
-      }
-
-      .trust-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        background: #f0fdf4;
-        color: #15803d;
-        padding: 0.5rem 1rem;
-        border-radius: 50px;
-        font-weight: 600;
-        border: 1px solid #bbf7d0;
-      }
-
-      /* Timeline Process */
-      .process-timeline {
-        display: flex;
-        justify-content: space-between;
-        margin: 4rem 0 6rem;
-        position: relative;
-        flex-wrap: wrap;
-        gap: 2rem;
-      }
-
-      .process-timeline::before {
-        content: '';
-        position: absolute;
-        top: 40px;
-        left: 50px;
-        right: 50px;
-        height: 4px;
-        background: #e2e8f0;
-        z-index: 0;
-        display: none;
-      }
-
-      @media (min-width: 768px) {
-        .process-timeline::before {
-          display: block;
+        .scrolling-container {
+            height: 100%;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+            padding-right: 4px;
         }
-      }
-
-      .process-step {
-        position: relative;
-        z-index: 1;
-        text-align: center;
-        flex: 1;
-        min-width: 200px;
-      }
-
-      .step-icon {
-        width: 80px;
-        height: 80px;
-        background: white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2rem;
-        margin: 0 auto 1.5rem;
-        box-shadow: var(--shadow-md);
-        border: 4px solid white;
-        position: relative;
-      }
-
-      .step-icon.active {
-        background: var(--primary);
-        color: white;
-        border-color: #e0e7ff;
-      }
-
-      .step-title {
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-        color: var(--dark);
-      }
-
-      .step-desc {
-        font-size: 0.9rem;
-        color: var(--gray);
-      }
-
-      /* Phases Grid */
-      .phases-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 2rem;
-        margin-bottom: 6rem;
-      }
-
-      .phase-card {
-        background: white;
-        border-radius: var(--radius-lg);
-        padding: 2.5rem;
-        box-shadow: var(--shadow-md);
-        transition: all 0.3s;
-        border: 1px solid #e2e8f0;
-        position: relative;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .phase-card:hover {
-        transform: translateY(-10px);
-        box-shadow: var(--shadow-lg);
-      }
-
-      .phase-card.locked {
-        background: #f8fafc;
-        border-style: dashed;
-      }
-      .phase-card.locked .card-content {
-        opacity: 0.7;
-        filter: grayscale(0.5);
-      }
-
-      .lock-overlay {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        background: #f1f5f9;
-        color: #64748b;
-        padding: 0.4rem 0.8rem;
-        border-radius: 50px;
-        font-size: 0.8rem;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-      }
-
-      .phase-icon {
-        width: 60px;
-        height: 60px;
-        border-radius: 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.8rem;
-        margin-bottom: 1.5rem;
-      }
-
-      .phase-duration {
-        display: inline-block;
-        padding: 0.4rem 1rem;
-        border-radius: 50px;
-        font-size: 0.8rem;
-        font-weight: 800;
-        margin-bottom: 1rem;
-        text-transform: uppercase;
-      }
-
-      .phase-title {
-        font-size: 1.5rem;
-        font-weight: 800;
-        margin-bottom: 0.5rem;
-        color: var(--dark);
-      }
-
-      .phase-desc {
-        color: var(--gray);
-        margin-bottom: 1.5rem;
-        line-height: 1.6;
-      }
-
-      .phase-list {
-        list-style: none;
-        padding: 0;
-        margin: 0 0 2rem 0;
-      }
-
-      .phase-list li {
-        margin-bottom: 0.8rem;
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-        color: var(--dark);
-        font-weight: 500;
-      }
-
-      .cta-btn {
-        margin-top: auto;
-        display: block;
-        text-align: center;
-        padding: 1rem;
-        border-radius: 12px;
-        font-weight: 700;
-        text-decoration: none;
-        transition: transform 0.2s;
-      }
-      .cta-btn:hover {
-        transform: scale(1.02);
-      }
-
-      /* Phase 1 Styles */
-      .phase-1 .phase-icon {
-        background: #eff6ff;
-        color: var(--phase1);
-      }
-      .phase-1 .phase-duration {
-        background: #eff6ff;
-        color: var(--phase1);
-      }
-      .phase-1 li::before {
-        content: '🎯';
-      }
-      .phase-1 .cta-btn {
-        background: var(--phase1);
-        color: white;
-        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-      }
-
-      /* Phase 2 Styles */
-      .phase-2 .phase-icon {
-        background: #fff7ed;
-        color: var(--phase2);
-      }
-      .phase-2 .phase-duration {
-        background: #fff7ed;
-        color: var(--phase2);
-      }
-      .phase-2 li::before {
-        content: '💬';
-      }
-      .phase-2 .cta-btn {
-        background: #e2e8f0;
-        color: #64748b;
-        cursor: not-allowed;
-      }
-
-      /* Phase 3 Styles */
-      .phase-3 .phase-icon {
-        background: #f0fdf4;
-        color: var(--phase3);
-      }
-      .phase-3 .phase-duration {
-        background: #f0fdf4;
-        color: var(--phase3);
-      }
-      .phase-3 li::before {
-        content: '💰';
-      }
-      .phase-3 .cta-btn {
-        background: #e2e8f0;
-        color: #64748b;
-        cursor: not-allowed;
-      }
-
-      /* Manager Section */
-      .manager-section {
-        background: white;
-        border-radius: var(--radius-lg);
-        padding: 3rem;
-        margin-bottom: 6rem;
-        box-shadow: var(--shadow-md);
-        display: flex;
-        align-items: center;
-        gap: 3rem;
-        border: 1px solid #e2e8f0;
-      }
-
-      .manager-avatar {
-        width: 120px;
-        height: 120px;
-        background: #e2e8f0;
-        border-radius: 50%;
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 3rem;
-        border: 4px solid white;
-        box-shadow: var(--shadow-md);
-      }
-
-      .manager-content {
-        flex: 1;
-      }
-
-      .manager-name {
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: var(--primary);
-        margin-bottom: 0.2rem;
-      }
-      .manager-role {
-        color: var(--gray);
-        font-weight: 500;
-        margin-bottom: 1.5rem;
-        font-size: 0.9rem;
-      }
-      .manager-msg {
-        font-style: italic;
-        color: var(--dark);
-        line-height: 1.6;
-        margin-bottom: 2rem;
-        background: #f8fafc;
-        padding: 1.5rem;
-        border-radius: var(--radius-md);
-        position: relative;
-      }
-      .manager-msg::before {
-        content: '"';
-        font-size: 3rem;
-        color: var(--primary);
-        opacity: 0.2;
-        position: absolute;
-        top: -10px;
-        left: 10px;
-      }
-
-      .contact-grid {
-        display: flex;
-        gap: 1rem;
-      }
-
-      .contact-btn {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.8rem 1.5rem;
-        border-radius: 50px;
-        font-weight: 700;
-        text-decoration: none;
-        transition: transform 0.2s;
-        font-size: 0.95rem;
-      }
-
-      .btn-whatsapp {
-        background: #10b981;
-        color: white;
-      }
-      .btn-email {
-        background: #1e293b;
-        color: white;
-      }
-      .contact-btn:hover {
-        transform: translateY(-2px);
-        color: white;
-      }
-
-      /* Final CTA */
-      .final-cta {
-        background: var(--gradient-main);
-        border-radius: var(--radius-lg);
-        padding: 5rem 2rem;
-        text-align: center;
-        color: white;
-        margin-bottom: 4rem;
-        box-shadow: var(--shadow-lg);
-      }
-
-      .big-cta-btn {
-        background: white;
-        color: var(--primary);
-        font-size: 1.5rem;
-        font-weight: 800;
-        padding: 1.5rem 3rem;
-        border-radius: 50px;
-        text-decoration: none;
-        display: inline-block;
-        margin-top: 2rem;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        transition:
-          transform 0.3s,
-          box-shadow 0.3s;
-      }
-      .big-cta-btn:hover {
-        transform: scale(1.05);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        color: var(--primary);
-      }
-
-      /* Footer */
-      footer {
-        text-align: center;
-        padding: 4rem 2rem;
-        border-top: 1px solid #e2e8f0;
-        color: var(--gray);
-      }
-
-      @media (max-width: 768px) {
-        h1 {
-          font-size: 2.5rem;
+        .scrolling-container::-webkit-scrollbar {
+            width: 6px;
         }
-        .manager-section {
-          flex-direction: column;
-          text-align: center;
-          gap: 1.5rem;
+        .scrolling-container::-webkit-scrollbar-track {
+            background: #F1F1F1;
         }
-        .contact-grid {
-          justify-content: center;
+        .scrolling-container::-webkit-scrollbar-thumb {
+            background: #D8B4E2;
+            border-radius: 3px;
         }
-        .process-timeline {
-          flex-direction: column;
-          gap: 3rem;
+        .scrolling-container::-webkit-scrollbar-thumb:hover {
+            background: #C084D0;
         }
-        .process-timeline::before {
-          display: block;
-          width: 4px;
-          height: 100%;
-          left: 50%;
-          top: 0;
-          transform: translateX(-50%);
+        .hero-image {
+            background-image: url("https://page.gensparksite.com/slides_images/abd6bb9b0d4b510c90e415782d13fb4f.webp");
+            background-size: cover;
+            background-position: center 20%;
         }
-        .step-icon {
-          margin-bottom: 1rem;
+        .funnel-step {
+            position: relative;
         }
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Hero Section -->
-    <header class="hero-section">
-      <div class="hero-content">
-        <h1>Bem-vindo(a) ao Método que Transforma Instagram em Máquina de Vendas</h1>
-        <p class="hero-subtitle">Sua decisão de virar o jogo começa agora. E nós estaremos com você em cada passo.</p>
-
-        <div class="stats-container">
-          <div class="stat-badge">
-            <span class="stat-number">+R$100M</span>
-            <span class="stat-label">Faturados</span>
-          </div>
-          <div class="stat-badge">
-            <span class="stat-number">+1.200</span>
-            <span class="stat-label">E-commerces</span>
-          </div>
-          <div class="stat-badge">
-            <span class="stat-number">+R$10M</span>
-            <span class="stat-label">Em Tráfego</span>
-          </div>
-          <div class="stat-badge">
-            <span class="stat-number">15 Anos</span>
-            <span class="stat-label">Experiência</span>
-          </div>
-        </div>
-
-        <div class="quote-box">Não tenha medo de falhar, tenha medo de não tentar!</div>
-      </div>
-    </header>
-
-    <div class="container">
-      <!-- Welcome Section -->
-      <section class="welcome-section">
-        <h2 class="welcome-title">Você acaba de dar o passo mais importante... 🚀</h2>
-        <p class="welcome-text">
-          Este não é apenas mais um curso ou PDF. Este é um <strong>GUIA PRÁTICO DE IMPLEMENTAÇÃO</strong>. <br /><br />
-          Essas orientações foram testadas e validadas por mais de 1.200 lojistas reais, como você, que buscavam não
-          apenas likes, mas vendas reais e previsíveis. Estamos aqui para segurar sua mão e mostrar exatamente o que
-          fazer, sem "achismos".
-        </p>
-        <div class="trust-badge">✅ Método Validado por +1.200 Lojistas</div>
-      </section>
-
-      <!-- How It Works -->
-      <h2 style="text-align: center; margin-bottom: 2rem">Como Funciona o Método?</h2>
-      <div class="process-timeline">
-        <div class="process-step">
-          <div class="step-icon active">🏠</div>
-          <h3 class="step-title">1. Você está Aqui</h3>
-          <p class="step-desc">Entendendo a visão geral e se preparando para a transformação.</p>
-        </div>
-        <div class="process-step">
-          <div class="step-icon">📞</div>
-          <h3 class="step-title">2. Contate o Gestor</h3>
-          <p class="step-desc">Chame seu gestor no WhatsApp para liberar o acesso à <strong>Fase 1</strong>.</p>
-        </div>
-        <div class="process-step">
-          <div class="step-icon">📘</div>
-          <h3 class="step-title">3. Execute a Fase 1</h3>
-          <p class="step-desc">Aplique os fundamentos. Ao concluir, seu gestor libera a <strong>Fase 2</strong>.</p>
-        </div>
-        <div class="process-step">
-          <div class="step-icon">🚀</div>
-          <h3 class="step-title">4. Evolução Contínua</h3>
-          <p class="step-desc">Avance para Fase 2 e 3 com acompanhamento personalizado.</p>
-        </div>
-      </div>
-
-      <!-- Phases Grid -->
-      <div class="phases-grid">
-        <!-- Fase 1 -->
-        <div class="phase-card phase-1">
-          <div class="lock-overlay">🔒 BLOQUEADA - Solicite acesso</div>
-          <div class="phase-icon">🎯</div>
-          <span class="phase-duration">0-45 DIAS</span>
-          <h3 class="phase-title">Fundamento e Organização</h3>
-          <p class="phase-desc">
-            Dê lógica ao seu perfil. Pare de "postar no automático" e construa uma base sólida que vende por si só.
-          </p>
-          <ul class="phase-list">
-            <li>Clareza de posicionamento</li>
-            <li>Padrão mínimo de conteúdo</li>
-            <li>Estrutura de vídeos validada</li>
-          </ul>
-          <a href="#manager" class="cta-btn">🔓 Solicitar Acesso à Fase 1</a>
-        </div>
-
-        <!-- Fase 2 -->
-        <div class="phase-card phase-2 locked">
-          <div class="lock-overlay">🔒 BLOQUEADA - Conclua Fase 1</div>
-          <div class="phase-icon">💬</div>
-          <span class="phase-duration">45-90 DIAS</span>
-          <h3 class="phase-title">Engajamento e Desejo</h3>
-          <p class="phase-desc">
-            Transforme visualizações em interação real. Crie conexão genuína e desejo ardente pelos seus produtos.
-          </p>
-          <ul class="phase-list">
-            <li>Foco no benefício (não produto)</li>
-            <li>Stories conversacionais</li>
-            <li>Prova social obrigatória</li>
-          </ul>
-          <a href="#" class="cta-btn">🔒 Desbloqueia após Fase 1</a>
-        </div>
-
-        <!-- Fase 3 -->
-        <div class="phase-card phase-3 locked">
-          <div class="lock-overlay">🔒 BLOQUEADA - Conclua Fase 2</div>
-          <div class="phase-icon">💰</div>
-          <span class="phase-duration">90-180 DIAS +</span>
-          <h3 class="phase-title">Conversão e Venda</h3>
-          <p class="phase-desc">
-            Transforme atenção em faturamento consistente. Aprenda a pedir a venda sem medo e com estratégia.
-          </p>
-          <ul class="phase-list">
-            <li>Intenção de venda clara</li>
-            <li>CTA direto e estratégico</li>
-            <li>Ajustes baseados em dados</li>
-          </ul>
-          <a href="#" class="cta-btn">🔒 Desbloqueia após Fase 2</a>
-        </div>
-      </div>
-
-      <!-- Why It Works -->
-      <div
-        style="
-          background: white;
-          padding: 3rem;
-          border-radius: 1.5rem;
-          text-align: center;
-          margin-bottom: 6rem;
-          box-shadow: var(--shadow-md);
-        "
-      >
-        <h2 style="margin-bottom: 2rem">Por Que Esse Método Funciona?</h2>
-        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap">
-          <span class="trust-badge">✅ Testado</span>
-          <span class="trust-badge">✅ Prático</span>
-          <span class="trust-badge">✅ Adaptável</span>
-          <span class="trust-badge">✅ Suporte Real</span>
-        </div>
-        <p style="margin-top: 1.5rem; max-width: 700px; margin-left: auto; margin-right: auto; color: var(--gray)">
-          +1.200 lojistas já validaram esse caminho. Não é sobre sorte ou viralizar, é sobre constância e estratégia
-          certa.
-        </p>
-      </div>
-
-      <!-- Manager Section -->
-      <section id="manager" class="manager-section">
-        <div class="manager-avatar">👤</div>
-        <div class="manager-content">
-          <h2 class="manager-name">Seu Gestor(a) DigitalDM</h2>
-          <p class="manager-role">Parceiro(a) de Sucesso do Cliente</p>
-
-          <div class="manager-msg">
-            "Olá! Que alegria ter você aqui! 💜<br /><br />
-            Estou aqui para caminhar ao seu lado em cada etapa dessa transformação. Você não está sozinho(a) nessa
-            jornada — estamos juntos!<br /><br />
-            <strong>Não hesite em chamar no grupo.</strong> Vamos realizar esse processo juntos, sem pressa, mas com
-            propósito.<br /><br />
-            Assim que você ler esta página e solicitar no grupo, vou liberar a <strong>Fase 1</strong> para você começar
-            a construir seu Instagram de verdade. O primeiro passo já foi dado — você está aqui. Agora é só me chamar
-            que seguimos juntos! 🚀"
-          </div>
-        </div>
-      </section>
-
-      <!-- Final CTA Section -->
-      <div
-        style="
-          background: var(--gradient-main);
-          text-align: center;
-          padding: 5rem 2rem;
-          border-radius: 1.5rem;
-          color: white;
-          margin-bottom: 4rem;
-          box-shadow: var(--shadow-lg);
-          position: relative;
-          overflow: hidden;
-        "
-      >
-        <!-- Decorative background effect -->
-        <div
-          style="
+        .funnel-step::after {
+            content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-            pointer-events: none;
-          "
-        ></div>
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-left: 6px solid #D1D5DB;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+        }
+        .funnel-step:last-child::after {
+            display: none;
+        }
+        .hero-badge {
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 800;
+        }
+        /* New Process Step Connector */
+        .process-step {
+            position: relative;
+        }
+        .process-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 2rem;
+            right: -50%;
+            width: 100%;
+            height: 2px;
+            background-color: #E5E7EB;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body class="antialiased" style="">
+<!-- Progress Bar -->
+<div class="fixed top-0 left-0 w-full h-1 bg-gray-200 z-50">
+<div class="h-full bg-purple-600" style="width: 5%;"></div>
+</div>
+<!-- Main Container -->
+<div class="scrolling-container relative">
+<!-- Navigation Header -->
+<nav class="sticky top-0 z-40 bg-white border-b border-gray-100 px-8 py-3 flex justify-between items-center shadow-sm">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 bg-purple-600 rounded-full"></span>
+<span class="font-editorial font-bold text-lg tracking-wide text-gray-800">Método DigitalDM </span>
+</div>
+<div class="flex gap-6 text-xs font-bold tracking-widest uppercase text-gray-400">
+<span class="text-purple-600 border-b-2 border-purple-600 pb-1">Intro</span>
+<span>Fase 1: Preparação</span>
+<span>Fase 2: Estrutura</span>
+<span>Fase 3: Lançamento</span>
+<span>Fase 4: Otimização</span>
+</div>
+<div class="text-xs text-gray-500 font-medium">
+<span class="bg-pink-50 text-pink-700 px-3 py-1 rounded-full uppercase tracking-wider text-[10px] font-bold">Moda Feminina 2025/2026</span></div>
+</nav>
+<!-- HERO SECTION -->
+<header class="relative w-full h-[600px] flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 hero-image"></div>
+<div class="absolute inset-0 bg-white bg-opacity-60 backdrop-filter backdrop-blur-[2px]"></div>
+<div class="relative z-10 max-w-4xl mx-auto text-center px-6">
+<div class="mb-8">
+<span class="inline-block py-2 px-6 border border-gray-900 text-gray-900 hero-badge bg-white shadow-md rounded-sm">
+<p class="m-0" style="color: rgb(0, 0, 0); font-size: 14px;">Exclusivo DigitalDM</p>
+</span>
+</div>
+<div class="mb-6">
+<h1 class="font-editorial text-5xl md:text-6xl font-bold text-gray-900 leading-tight drop-shadow-sm">
+<p class="m-0">Transforme seu Instagram em</p>
+<p class="m-0 text-purple-900 italic mt-2">Máquina de Vendas</p>
+</h1>
+</div>
+<div class="mb-10 max-w-2xl mx-auto">
+<p class="text-xl md:text-2xl text-gray-800 font-medium leading-relaxed">
+                    Domine o visual e a estratégia para vender moda todos os dias.
+                </p>
+</div>
+<div class="flex flex-col items-center mt-8 opacity-80 hover:opacity-100 transition-opacity cursor-pointer">
+<p class="text-xs font-bold uppercase tracking-[0.2em] text-gray-600 mb-3" style="font-size: 16px; color: rgb(0, 0, 0);">Sua Jornada Começa Abaixo</p>
 
-        <!-- Content -->
-        <div style="position: relative; z-index: 2; max-width: 700px; margin: 0 auto">
-          <h2 style="font-size: 2.5rem; margin-bottom: 1rem; font-weight: 800">Pronto(a) para Começar?</h2>
-          <p style="font-size: 1.2rem; margin-bottom: 3rem; opacity: 0.95">
-            Seu gestor está esperando por você! Entre em contato agora e dê o primeiro passo para transformar seu
-            Instagram.
-          </p>
-
-          <!-- Big CTA Button -->
-          <a
-            href="#manager"
-            class="big-cta-btn"
-            style="
-              background: white;
-              color: var(--primary);
-              font-size: 1.3rem;
-              font-weight: 800;
-              padding: 1.2rem 2.5rem;
-              border-radius: 50px;
-              text-decoration: none;
-              display: inline-block;
-              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-              transition: all 0.3s ease;
-            "
-            onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 15px 40px rgba(0, 0, 0, 0.4)';"
-            onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 10px 30px rgba(0, 0, 0, 0.3)';"
-          >
-            📞 Fale com seu Gestor!
-          </a>
-
-          <!-- Info Box -->
-          <div
-            style="
-              background: rgba(255, 255, 255, 0.15);
-              backdrop-filter: blur(10px);
-              border: 1px solid rgba(255, 255, 255, 0.3);
-              border-radius: 16px;
-              padding: 1.5rem 2rem;
-              margin-top: 3rem;
-              display: inline-block;
-            "
-          >
-            <p
-              style="
-                font-size: 1rem;
-                font-weight: 600;
-                margin: 0 0 0.5rem 0;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 0.5rem;
-              "
-            >
-              <span style="font-size: 1.5rem">🔓</span>
-              Como funciona o desbloqueio?
+</div>
+</div>
+</header>
+<!-- SECTION 1: CREDIBILIDADE (NEW) -->
+<section class="py-16 bg-purple-600 text-white relative overflow-hidden">
+<div class="absolute inset-0 opacity-20">
+<div class="absolute top-0 left-0 w-64 h-64 bg-pink-500 rounded-full filter blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+<div class="absolute bottom-0 right-0 w-64 h-64 bg-indigo-500 rounded-full filter blur-3xl translate-x-1/2 translate-y-1/2"></div>
+</div>
+<div class="max-w-6xl mx-auto px-6 relative z-10 text-center">
+<p class="text-lg md:text-xl font-medium mb-10 text-purple-100">Sua decisão de virar o jogo começa agora. E nós estaremos com você em cada passo.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm rounded-xl p-6 border border-white border-opacity-20 hover:bg-opacity-20 transition-all">
+<h3 class="text-4xl font-bold mb-2">+R$100M</h3>
+<p class="text-sm font-medium text-purple-100 uppercase tracking-wider">Faturados</p>
+</div>
+<div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm rounded-xl p-6 border border-white border-opacity-20 hover:bg-opacity-20 transition-all">
+<h3 class="text-4xl font-bold mb-2">+1.200</h3>
+<p class="text-sm font-medium text-purple-100 uppercase tracking-wider">E-commerces</p>
+</div>
+<div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm rounded-xl p-6 border border-white border-opacity-20 hover:bg-opacity-20 transition-all">
+<h3 class="text-4xl font-bold mb-2">+R$10M</h3>
+<p class="text-sm font-medium text-purple-100 uppercase tracking-wider">Em Tráfego</p>
+</div>
+<div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm rounded-xl p-6 border border-white border-opacity-20 hover:bg-opacity-20 transition-all">
+<h3 class="text-4xl font-bold mb-2">15 Anos</h3>
+<p class="text-sm font-medium text-purple-100 uppercase tracking-wider">Experiência</p>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: MOTIVACIONAL (NEW) -->
+<section class="py-20 bg-white">
+<div class="max-w-4xl mx-auto px-6 text-center">
+<div class="mb-8">
+<h2 class="font-editorial text-4xl md:text-5xl font-bold text-gray-900 mb-4">Você acaba de dar o passo mais importante... <i class="fa-solid fa-rocket text-pink-500 ml-2"></i></h2>
+<p class="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
+                    Este não é apenas mais um curso ou PDF. Este é um <strong class="text-purple-700">GUIA PRÁTICO DE IMPLEMENTAÇÃO</strong>.
+                </p>
+</div>
+<div class="mb-10 max-w-3xl mx-auto">
+<p class="text-gray-600 leading-relaxed mb-6">
+                    Essas orientações foram testadas e validadas por mais de 1.200 lojistas reais, como você, que buscavam não apenas likes, mas vendas reais e previsíveis. Estamos aqui para segurar sua mão e mostrar exatamente o que fazer, sem "achismos".
+                </p>
+</div>
+<div class="inline-flex items-center gap-2 bg-green-50 text-green-700 px-6 py-3 rounded-full border border-green-100 shadow-sm">
+<i class="fa-solid fa-square-check text-green-500"></i>
+<span class="font-bold">Método Validado por +1.200 Lojistas</span>
+</div>
+<div class="mt-12 bg-white border-2 border-purple-100 rounded-full px-8 py-4 shadow-lg inline-block transform -rotate-1 hover:rotate-0 transition-transform">
+<p class="text-xl font-bold text-purple-800 italic font-editorial">"Não tenha medo de falhar, tenha medo de não tentar!"</p>
+</div>
+</div>
+</section>
+<!-- SECTION 3: COMO FUNCIONA (NEW) -->
+<section class="py-20 bg-gray-50">
+<div class="max-w-6xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="font-editorial text-3xl md:text-4xl font-bold text-gray-900">Como Funciona o Método?</h2>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-start gap-8 relative px-4 md:px-12">
+<!-- Step 1 -->
+<div class="flex-1 text-center relative z-10 process-step">
+<div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-white shadow-md">
+<i class="fa-solid fa-house text-2xl text-blue-600"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-2">1. Você está Aqui</h3>
+<p class="text-sm text-gray-600 leading-relaxed px-2">Entendendo a visão geral e se preparando para a transformação.</p>
+</div>
+<!-- Step 2 -->
+<div class="flex-1 text-center relative z-10 process-step">
+<div class="w-20 h-20 bg-white border-2 border-red-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-md">
+<i class="fa-solid fa-phone text-2xl text-red-500"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-2">2. Contate o Gestor</h3>
+<p class="text-sm text-gray-600 leading-relaxed px-2">Chame seu gestor no WhatsApp para liberar o acesso à Fase 1.</p>
+</div>
+<!-- Step 3 -->
+<div class="flex-1 text-center relative z-10 process-step">
+<div class="w-20 h-20 bg-white border-2 border-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-md">
+<i class="fa-solid fa-book text-2xl text-blue-500"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-2">3. Execute a Fase 1</h3>
+<p class="text-sm text-gray-600 leading-relaxed px-2">Aplique os fundamentos. Ao concluir, seu gestor libera a Fase 2.</p>
+</div>
+<!-- Step 4 -->
+<div class="flex-1 text-center relative z-10">
+<div class="w-20 h-20 bg-white border-2 border-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-md">
+<i class="fa-solid fa-rocket text-2xl text-yellow-500"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-2">4. Evolução Contínua</h3>
+<p class="text-sm text-gray-600 leading-relaxed px-2">Avance para Fase 2 e 3 com acompanhamento personalizado.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: POR QUE FUNCIONA (NEW) -->
+<section class="py-20 bg-white">
+<div class="max-w-5xl mx-auto px-6 text-center">
+<h2 class="font-editorial text-3xl md:text-4xl font-bold text-gray-900 mb-12">Por Que Esse Método Funciona?</h2>
+<div class="flex flex-wrap justify-center gap-4 mb-10">
+<div class="flex items-center gap-2 bg-green-50 text-green-800 px-5 py-2 rounded-lg border border-green-100">
+<i class="fa-solid fa-check-square text-green-500 text-lg"></i>
+<span class="font-bold text-lg">Testado</span>
+</div>
+<div class="flex items-center gap-2 bg-green-50 text-green-800 px-5 py-2 rounded-lg border border-green-100">
+<i class="fa-solid fa-check-square text-green-500 text-lg"></i>
+<span class="font-bold text-lg">Prático</span>
+</div>
+<div class="flex items-center gap-2 bg-green-50 text-green-800 px-5 py-2 rounded-lg border border-green-100">
+<i class="fa-solid fa-check-square text-green-500 text-lg"></i>
+<span class="font-bold text-lg">Adaptável</span>
+</div>
+<div class="flex items-center gap-2 bg-green-50 text-green-800 px-5 py-2 rounded-lg border border-green-100">
+<i class="fa-solid fa-check-square text-green-500 text-lg"></i>
+<span class="font-bold text-lg">Suporte Real</span>
+</div>
+</div>
+<p class="text-gray-600 text-lg max-w-3xl mx-auto">
+                +1.200 lojistas já validaram esse caminho. Não é sobre sorte ou viralizar, é sobre constância e estratégia certa.
             </p>
-            <p style="font-size: 0.9rem; margin: 0; opacity: 0.95; line-height: 1.6">
-              Após chamar seu gestor no grupo, ele vai liberar o acesso exclusivo à <strong>Fase 1</strong>.<br />
-              Você receberá o link direto para começar sua transformação!
-            </p>
-          </div>
+</div>
+</section>
+<!-- SECTION 5: GESTOR DIGITALDM (NEW) -->
+<section class="py-20 bg-[#F3F4F6]">
+<div class="max-w-4xl mx-auto px-6">
+<h3 class="text-2xl font-bold text-blue-500 mb-1">Seu Gestor(a) DigitalDM</h3>
+<p class="text-gray-500 mb-8 text-sm">Parceiro(a) de Sucesso do Cliente</p>
+<div class="bg-white rounded-2xl p-8 shadow-sm flex flex-col md:flex-row gap-8 items-start border border-gray-100 relative">
+<div class="w-full md:w-auto flex justify-center">
+<div class="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center border-4 border-white shadow-md">
+<i class="fa-solid fa-user text-4xl text-gray-500"></i>
+</div>
+</div>
+<div class="flex-1 relative">
 
-          <!-- Final reassurance -->
-          <p
-            style="
-              margin-top: 2.5rem;
-              font-size: 1.1rem;
-              font-weight: 600;
-              opacity: 0.95;
-              font-style: italic;
-            "
-          >
-            💜 Você não está sozinho(a) nessa jornada. Vamos juntos!
-          </p>
-        </div>
-      </div>
+<div class="space-y-4 text-gray-700">
+<p class="font-bold text-purple-700 italic">"Olá! Que alegria ter você aqui! <i class="fa-solid fa-heart"></i>"</p>
+<p style="position: relative; transform: translate(-2.70931px, 18.9652px);">Estou aqui para caminhar ao seu lado em cada etapa dessa transformação. Você não está sozinho(a) nessa jornada — estamos juntos!</p>
+<p class="font-bold bg-blue-50 inline-block px-1" style="font-size: 22px; position: relative; transform: translate(-2.70931px, 32.5118px);">Não hesite em chamar no grupo. Vamos realizar esse processo juntos, sem pressa, mas com propósito.</p>
+<p><br></p>
+</div>
+<div class="mt-8">
 
-      <!-- Footer -->
-      <footer>
-        <div style="margin-bottom: 1.5rem; font-weight: 800; font-size: 1.5rem; color: var(--primary)">DigitalDM</div>
-        <p>Desde 2010 realizando sonhos se tornarem realidade 💜</p>
-      </footer>
-    </div>
-  </body>
-</html>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION ORIGINAL 2: O NOVO JOGO DA MODA -->
+<section class="py-20 px-12 bg-white">
+<div class="max-w-6xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-editorial text-4xl font-bold mb-4 text-gray-900">O Novo Jogo da Moda (2025-2026)</h2>
+<p class="text-gray-600 text-lg max-w-2xl mx-auto">
+                    Esqueça a vitrine estática. O Método DigitalDM transforma seguidores em clientes fiéis através de um ecossistema de desejo e conversão.
+                </p>
+</div>
+<!-- Funil Visual -->
+<div class="bg-gray-50 rounded-2xl p-10 border border-gray-100 shadow-sm mb-12">
+<div class="flex justify-between items-center relative">
+<div class="absolute top-1/2 left-0 w-full h-0.5 bg-gray-200 -z-10"></div>
+<div class="flex flex-col items-center bg-gray-50 px-4 z-10 funnel-step">
+<div class="w-14 h-14 rounded-full bg-white border-2 border-purple-100 flex items-center justify-center text-gray-400 mb-3 shadow-sm text-xl">
+<i class="fa-solid fa-wand-magic-sparkles"></i>
+</div>
+<span class="text-xs font-bold uppercase text-gray-500 tracking-wider">Fase 1: Preparação</span>
+</div>
+<div class="flex flex-col items-center bg-gray-50 px-4 z-10 funnel-step">
+<div class="w-14 h-14 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 mb-3 shadow-sm text-xl border-2 border-white">
+<i class="fa-solid fa-layer-group"></i>
+</div>
+<span class="text-xs font-bold uppercase text-purple-600 tracking-wider">Fase 2: Estrutura</span>
+</div>
+<div class="flex flex-col items-center bg-gray-50 px-4 z-10 funnel-step">
+<div class="w-14 h-14 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 mb-3 shadow-sm text-xl border-2 border-white">
+<i class="fa-solid fa-rocket"></i>
+</div>
+<span class="text-xs font-bold uppercase text-pink-600 tracking-wider">Fase 3: Lançamento</span>
+</div>
+<div class="flex flex-col items-center bg-gray-50 px-4 z-10">
+<div class="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center text-green-600 mb-3 shadow-sm text-xl border-2 border-white">
+<i class="fa-solid fa-chart-line"></i>
+</div>
+<span class="text-xs font-bold uppercase text-green-600 tracking-wider">Fase 4: Otimização</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+<div class="bg-purple-50 p-8 rounded-xl border border-purple-100">
+<h3 class="font-editorial text-2xl font-bold mb-4 text-purple-900">Para quem é este método?</h3>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<div class="mt-1 bg-purple-200 rounded-full p-1"><i class="fa-solid fa-check text-purple-700 text-xs"></i></div>
+<p class="text-gray-700">Lojistas de moda feminina que desejam previsibilidade de caixa.</p>
+</li>
+<li class="flex items-start gap-3">
+<div class="mt-1 bg-purple-200 rounded-full p-1"><i class="fa-solid fa-check text-purple-700 text-xs"></i></div>
+<p class="text-gray-700">Empreendedoras dispostas a liderar e humanizar a marca.</p>
+</li>
+<li class="flex items-start gap-3">
+<div class="mt-1 bg-purple-200 rounded-full p-1"><i class="fa-solid fa-check text-purple-700 text-xs"></i></div>
+<p class="text-gray-700">Quem entende que consistência vence o algoritmo.</p>
+</li>
+</ul>
+</div>
+<div class="bg-white p-10 rounded-xl border border-gray-200 shadow-sm flex flex-col justify-center items-center text-center h-full">
+<h3 class="font-editorial text-3xl font-bold mb-8 text-gray-900">Seu Compromisso</h3>
+<div class="relative w-full">
+<p class="text-gray-700 text-lg md:text-xl italic border-l-4 border-pink-400 pl-6 py-6 bg-pink-50 rounded-r-lg text-left shadow-sm leading-relaxed">
+                            "Eu me comprometo a executar cada fase com excelência. Entendo que não existem atalhos, existe método."
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3 (ORIGINAL): O QUE VOCÊ VAI CONSTRUIR -->
+<section class="py-16 px-12 bg-[#F9FAFB]">
+<div class="max-w-6xl mx-auto">
+<div class="text-center mb-10">
+<span class="bg-purple-100 text-purple-700 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">A Jornada</span>
+<h3 class="font-editorial text-3xl font-bold text-gray-900 mt-4">O Que Você Vai Construir</h3>
+<p class="text-gray-500 mt-2">Quatro pilares fundamentais que sustentam uma marca de moda lucrativa.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+<div class="w-12 h-12 bg-purple-50 rounded-full flex items-center justify-center mb-4 mx-auto">
+<i class="fa-regular fa-id-card text-purple-500 text-xl"></i>
+</div>
+<h4 class="text-lg font-bold text-gray-900 text-center mb-2">Perfil Estratégico</h4>
+<p class="text-sm text-gray-600 text-center leading-relaxed">Uma "vitrine digital" irresistível que comunica valor instantaneamente.</p>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+<div class="w-12 h-12 bg-pink-50 rounded-full flex items-center justify-center mb-4 mx-auto">
+<i class="fa-regular fa-calendar-check text-pink-500 text-xl"></i>
+</div>
+<h4 class="text-lg font-bold text-gray-900 text-center mb-2">Rotina de Conteúdo</h4>
+<p class="text-sm text-gray-600 text-center leading-relaxed">Processos claros para criar stories e reels sem perder tempo.</p>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+<div class="w-12 h-12 bg-indigo-50 rounded-full flex items-center justify-center mb-4 mx-auto">
+<i class="fa-solid fa-bag-shopping text-indigo-500 text-xl"></i>
+</div>
+<h4 class="text-lg font-bold text-gray-900 text-center mb-2">Sistema de Vendas</h4>
+<p class="text-sm text-gray-600 text-center leading-relaxed">Scripts e funis validados para transformar directs em pedidos.</p>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+<div class="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center mb-4 mx-auto">
+<i class="fa-solid fa-users text-green-500 text-xl"></i>
+</div>
+<h4 class="text-lg font-bold text-gray-900 text-center mb-2">Comunidade Engajada</h4>
+<p class="text-sm text-gray-600 text-center leading-relaxed">Clientes que amam, compram e recomendam a sua marca.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: CONCLUSÃO DA INTRODUÇÃO -->
+<section class="py-20 px-12 bg-white mb-10">
+<div class="max-w-4xl mx-auto">
+<div class="bg-gradient-to-r from-gray-900 to-gray-800 rounded-3xl p-12 text-center text-white relative overflow-hidden shadow-2xl">
+<div class="absolute top-0 right-0 w-64 h-64 bg-purple-600 rounded-full opacity-20 filter blur-3xl -mr-20 -mt-20"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-pink-600 rounded-full opacity-20 filter blur-3xl -ml-20 -mb-20"></div>
+<div class="relative z-10">
+<div class="w-16 h-16 bg-white bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-6 backdrop-filter backdrop-blur-sm">
+<i class="fa-solid fa-check text-2xl text-green-400"></i>
+</div>
+<h3 class="font-editorial text-4xl font-bold mb-4">Parabéns!</h3>
+<p class="text-xl text-gray-200 mb-8 font-light">
+                        Você concluiu a Introdução e está pronta para dar o próximo passo.
+                    </p>
+<div class="bg-white bg-opacity-10 rounded-xl p-6 border border-white border-opacity-20 max-w-2xl mx-auto">
+<p class="text-sm md:text-base font-medium leading-relaxed">
+                            "Após ter lido a página e chego até aqui para desbloquear a <span style="color: rgb(209, 177, 243);"><strong>Fase 1 (Preparação)</strong></span>, entre em contato agora mesmo com seu gestor de tráfego no seu grupo no WhatsApp da DigitalDM e confirme que você está <strong>"PRONTA(O)"</strong> para iniciar."
+                        </p>
+</div>
+<div class="mt-8">
+
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+
+</body></html>
