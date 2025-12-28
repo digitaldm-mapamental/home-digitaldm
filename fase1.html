@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="pt-BR">
-<head>
+<html data-theme="light" lang="pt-BR" style=""><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Fase 1: Preparação - Método DigitalDM</title>
@@ -82,7 +81,7 @@
         }
     </style>
 </head>
-<body class="antialiased flex flex-col min-h-screen">
+<body class="antialiased flex flex-col min-h-screen" style="">
 <!-- Header Sticky -->
 <nav class="sticky top-0 z-40 bg-white/95 backdrop-filter backdrop-blur-sm border-b border-gray-100 px-4 md:px-8 py-3 flex justify-between items-center shadow-sm w-full">
 <div class="flex items-center gap-2">
@@ -116,7 +115,7 @@
 <div class="w-full bg-gray-100 rounded-full h-2">
 <div class="bg-purple-600 h-2 rounded-full progress-bar-fill" id="progress-bar" style="width: 0%"></div>
 </div>
-<p class="text-[10px] text-center text-gray-400 mt-1" id="progress-message">Continue marcando itens do checklist.</p>
+<p class="text-[10px] text-center text-gray-400 mt-1" id="progress-message">Comece marcando os itens na seção checklist para ativar seu progresso.</p>
 </div>
 <!-- CONTENT WRAPPER -->
 <div class="w-full flex-grow flex flex-col">
@@ -711,7 +710,7 @@
                 
                 // Update Message based on progress
                 if (percentage === 0) {
-                    progressMessage.textContent = "Comece marcando os itens do checklist abaixo.";
+                    progressMessage.textContent = "Comece marcando os itens na seção checklist para ativar seu progresso.";
                     progressMessage.className = "text-[10px] text-center text-gray-400 mt-1";
                 } else if (percentage < 50) {
                     progressMessage.textContent = "Ótimo começo! Continue assim.";
@@ -729,5 +728,4 @@
             updateProgress();
         });
     </script>
-</body>
-</html>
+</body></html>
