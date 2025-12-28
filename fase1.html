@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
-<html data-theme="light" lang="pt-BR" style=""><head>
+<html data-theme="light" lang="pt-BR">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Fase 1: Preparação - Método DigitalDM</title>
@@ -38,16 +39,6 @@
             background: #8B5CF6;
         }
         
-        .text-accent { color: #8B5CF6; }
-        .bg-accent { background-color: #8B5CF6; }
-        .bg-accent-light { background-color: #F3E8FF; }
-        
-        .gate-pattern {
-            background-color: #ffffff;
-            background-image: radial-gradient(#E9D5FF 1px, transparent 1px);
-            background-size: 20px 20px;
-        }
-
         .check-custom:checked + div {
             background-color: #F3E8FF;
             border-color: #C4B5FD;
@@ -55,22 +46,19 @@
             color: #6B7280;
         }
 
-        /* Transition for progress bar */
         .progress-bar-fill {
             transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Sticky Progress Bar Styles */
         .sticky-progress {
             position: sticky;
-            top: 64px; /* Adjust based on navbar height */
+            top: 64px; 
             z-index: 30;
             background: white;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             border-radius: 0 0 12px 12px;
         }
 
-        /* Pulse Animation for Quote */
         @keyframes subtle-pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.02); }
@@ -79,31 +67,76 @@
         .animate-subtle-pulse {
             animation: subtle-pulse 3s infinite ease-in-out;
         }
+        
+        .nav-link {
+            position: relative;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link-locked {
+            color: #D1D5DB; 
+            cursor: not-allowed;
+            position: relative;
+        }
+        
+        .nav-link-locked:hover {
+            color: #9CA3AF; 
+        }
+        
+        .nav-link-locked::after {
+            content: "\f023"; 
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            font-size: 10px;
+            margin-left: 4px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        
+        .nav-link-locked:hover::after {
+            opacity: 1;
+        }
+
+        .video-card:hover .play-button {
+            transform: scale(1.1);
+            background-color: #7C3AED;
+        }
+
+        .copy-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .shadow-soft {
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.08);
+        }
     </style>
 </head>
-<body class="antialiased flex flex-col min-h-screen" style="">
+<body class="antialiased flex flex-col min-h-screen">
 <!-- Header Sticky -->
 <nav class="sticky top-0 z-40 bg-white/95 backdrop-filter backdrop-blur-sm border-b border-gray-100 px-4 md:px-8 py-3 flex justify-between items-center shadow-sm w-full">
 <div class="flex items-center gap-2">
 <span class="w-2 h-2 md:w-3 md:h-3 bg-purple-600 rounded-full"></span>
 <span class="font-editorial font-bold text-base md:text-lg tracking-wide text-gray-800">
-                DigitalDM <span class="hidden sm:inline text-xs font-sans text-gray-400 ml-1 uppercase tracking-widest">Método Exclusivo</span>
+            DigitalDM <span class="hidden sm:inline text-xs font-sans text-gray-400 ml-1 uppercase tracking-widest">Método Exclusivo</span>
 </span>
 </div>
 <!-- Desktop Menu -->
 <div class="hidden md:flex gap-6 text-xs font-bold tracking-widest uppercase text-gray-400">
-<span class="hover:text-purple-600 cursor-pointer transition">Home</span>
-<span class="text-purple-600 border-b-2 border-purple-600 pb-1">Fase 1</span>
-<span class="hover:text-purple-600 cursor-pointer transition">Fase 2</span>
-<span class="hover:text-purple-600 cursor-pointer transition">Fase 3</span>
-<span class="hover:text-purple-600 cursor-pointer transition">Fase 4</span>
+<a class="nav-link hover:text-purple-600 transition flex items-center" href="index.html">
+<i class="fa-solid fa-arrow-left mr-1 opacity-0 hover:opacity-100 transition-opacity"></i> Home
+        </a>
+<span class="text-purple-600 border-b-2 border-purple-600 pb-1 cursor-default">Fase 1</span>
+<span class="nav-link-locked flex items-center" title="Conclua a Fase 1 para desbloquear">Fase 2</span>
+<span class="nav-link-locked flex items-center" title="Bloqueado">Fase 3</span>
+<span class="nav-link-locked flex items-center" title="Bloqueado">Fase 4</span>
 </div>
 <!-- Mobile Menu Indicator -->
 <div class="md:hidden text-xs font-bold text-purple-600 uppercase tracking-widest border-b-2 border-purple-600 pb-1">
-            Fase 1
-        </div>
+        Fase 1
+    </div>
 <div class="hidden sm:block text-xs text-gray-500 font-medium">
-            Suporte: <span class="bg-purple-100 text-purple-700 px-2 py-1 rounded">Gestor DigitalDM</span>
+        Suporte: <span class="bg-purple-100 text-purple-700 px-2 py-1 rounded">Gestor DigitalDM</span>
 </div>
 </nav>
 <!-- PROGRESS BAR STICKY WRAPPER -->
@@ -120,347 +153,413 @@
 <!-- CONTENT WRAPPER -->
 <div class="w-full flex-grow flex flex-col">
 <!-- WELCOME SECTION -->
-<div class="bg-white pt-6 pb-6 px-4 md:px-12 w-full border-b border-gray-100">
+<div class="bg-white pt-8 pb-8 px-4 md:px-12 w-full border-b border-gray-100">
 <div class="max-w-4xl mx-auto">
-<!-- Welcome Card -->
-<div class="bg-white border border-purple-100 rounded-xl p-6 shadow-sm flex flex-col md:flex-row gap-4 items-start relative overflow-hidden">
+<div class="bg-gradient-to-r from-purple-50 to-white border border-purple-100 rounded-xl p-6 shadow-sm flex flex-col md:flex-row gap-5 items-start relative overflow-hidden">
 <div class="absolute top-0 left-0 w-1 h-full bg-purple-500"></div>
-<div class="flex-shrink-0 bg-purple-50 w-12 h-12 rounded-full flex items-center justify-center text-2xl">
-                        👋
-                    </div>
+<div class="flex-shrink-0 bg-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-sm border border-purple-50">
+                    👋
+                </div>
 <div>
-<h2 class="text-lg md:text-xl font-bold text-purple-900 mb-2">Parabéns! Seu Gestor Liberou a Fase 1</h2>
-<p class="text-sm text-gray-600 leading-relaxed">
-                            Você está oficialmente começando sua jornada de transformação. Nos próximos dias, vamos construir a base sólida do seu Instagram. Seu gestor está acompanhando cada passo. Vamos juntos!
-                        </p>
-<p class="text-xs text-purple-500 mt-2 italic">Qualquer dúvida, seu gestor está a um clique de distância.</p>
-</div>
-</div>
-</div>
-</div>
-<!-- HERO TITLE -->
-<header class="py-10 px-4 md:px-12 bg-[#F9F9F7] w-full text-center">
-<div class="max-w-3xl mx-auto">
-<span class="bg-purple-100 text-purple-700 text-[10px] font-bold px-3 py-1 uppercase tracking-wider rounded-full mb-4 inline-block">Fase 1</span>
-<h1 class="font-editorial text-3xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
-                    Preparação e Organização
-                </h1>
-<p class="text-base md:text-lg text-gray-600 font-light italic">
-                    Pare de "postar no automático" e dê lógica ao perfil.
-                </p>
-</div>
-</header>
-<!-- PURPOSE & PROBLEM SOLVING -->
-<section class="py-12 px-4 md:px-12 bg-white w-full">
-<div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-<!-- Left: Purpose -->
-<div class="space-y-6">
-<div class="flex items-center gap-3 mb-2">
-<i class="fa-regular fa-lightbulb text-yellow-500 text-xl"></i>
-<h2 class="font-editorial text-2xl font-bold text-gray-800">O Propósito desta Fase</h2>
-</div>
-<p class="text-sm md:text-base text-gray-600 leading-relaxed">
-                        Muitos perfis de moda sofrem porque o conteúdo é confuso ou parece um catálogo frio. O objetivo agora não é "postar no automático", mas dar lógica ao perfil. Vamos ensinar ao algoritmo quem você é e mostrar para a cliente que sua loja tem alma, organização e propósito.
+<h2 class="text-xl font-bold text-purple-900 mb-2 font-editorial">Parabéns! Fase 1 Liberada.</h2>
+<p class="text-sm text-gray-600 leading-relaxed mb-3">
+                        Você está oficialmente começando sua jornada. Nos próximos dias, vamos construir a base sólida do seu Instagram. Esqueça a perfeição, foque na organização. Vamos transformar sua vitrine em uma Máquina de Vendas!
                     </p>
-<div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg">
-<p class="text-sm text-yellow-900 font-medium">
-<span class="font-bold">Mindset:</span> Menos perfeição, mais organização. Seja entendida em 3 segundos.
-                        </p>
+<span class="inline-block bg-purple-100 text-purple-700 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+<i class="fa-solid fa-play mr-1"></i> Comece Aqui
+                    </span>
 </div>
 </div>
-<!-- Right: What it Resolves -->
-<div class="bg-white border border-gray-100 rounded-xl p-6 shadow-sm">
-<div class="flex items-center gap-3 mb-6">
-<i class="fa-solid fa-triangle-exclamation text-gray-400"></i>
-<h3 class="font-bold text-gray-800 text-lg">O Que Esta Fase Resolve</h3>
 </div>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+</div>
+<!-- PROPÓSITO & O QUE RESOLVE (INÍCIO) -->
+<section class="py-12 px-4 md:px-12 bg-white w-full">
+<div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+<!-- Left: Propósito -->
 <div>
-<h4 class="font-bold text-gray-700 text-sm mb-1"><i class="fa-solid fa-shuffle text-red-400 mr-2"></i>Perfil Confuso</h4>
+<div class="flex items-center gap-3 mb-6">
+<i class="fa-regular fa-lightbulb text-2xl text-yellow-500"></i>
+<h2 class="font-editorial text-3xl font-bold text-gray-900">O Propósito desta Fase</h2>
+</div>
+<p class="text-gray-600 text-base leading-relaxed mb-8">
+                    Muitos perfis de moda sofrem porque o conteúdo é confuso ou parece um catálogo frio. O objetivo agora não é "postar no automático", mas dar lógica ao perfil. Vamos ensinar ao algoritmo quem você é e mostrar para a cliente que sua loja tem alma, organização e propósito.
+                </p>
+<div class="bg-yellow-50 border-l-4 border-yellow-400 p-5 rounded-r-lg">
+<p class="text-yellow-900 font-medium italic text-sm">
+<span class="font-bold not-italic">Mindset:</span> Menos perfeição, mais organização. Seja entendida em 3 segundos.
+                    </p>
+</div>
+</div>
+<!-- Right: O Que Resolve -->
+<div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-soft">
+<div class="flex items-center gap-2 mb-6">
+<i class="fa-solid fa-triangle-exclamation text-gray-400"></i>
+<h3 class="font-bold text-gray-900 text-lg">O Que Esta Fase Resolve</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Item 1 -->
+<div class="group">
+<div class="flex items-center gap-2 mb-1">
+<i class="fa-solid fa-shuffle text-red-400 text-sm group-hover:text-red-500 transition"></i>
+<h4 class="font-bold text-gray-800 text-sm">Perfil Confuso</h4>
+</div>
 <p class="text-xs text-gray-500 leading-snug">Cliente entra e não entende como comprar ou o que você vende.</p>
 </div>
-<div>
-<h4 class="font-bold text-gray-700 text-sm mb-1"><i class="fa-solid fa-chart-line text-blue-400 mr-2"></i>Baixo Engajamento</h4>
+<!-- Item 2 -->
+<div class="group">
+<div class="flex items-center gap-2 mb-1">
+<i class="fa-solid fa-chart-line text-blue-400 text-sm group-hover:text-blue-500 transition"></i>
+<h4 class="font-bold text-gray-800 text-sm">Baixo Engajamento</h4>
+</div>
 <p class="text-xs text-gray-500 leading-snug">Público que apenas assiste mas nunca interage.</p>
 </div>
-<div>
-<h4 class="font-bold text-gray-700 text-sm mb-1"><i class="fa-solid fa-border-none text-purple-400 mr-2"></i>Sem Padrão</h4>
+<!-- Item 3 -->
+<div class="group">
+<div class="flex items-center gap-2 mb-1">
+<i class="fa-solid fa-border-all text-purple-400 text-sm group-hover:text-purple-500 transition"></i>
+<h4 class="font-bold text-gray-800 text-sm">Sem Padrão</h4>
+</div>
 <p class="text-xs text-gray-500 leading-snug">Fim do "postar por postar" sem estratégia.</p>
 </div>
-<div>
-<h4 class="font-bold text-gray-700 text-sm mb-1"><i class="fa-regular fa-face-frown text-gray-400 mr-2"></i>Seguidores Frios</h4>
+<!-- Item 4 -->
+<div class="group">
+<div class="flex items-center gap-2 mb-1">
+<i class="fa-regular fa-face-frown text-gray-400 text-sm group-hover:text-gray-500 transition"></i>
+<h4 class="font-bold text-gray-800 text-sm">Seguidores Frios</h4>
+</div>
 <p class="text-xs text-gray-500 leading-snug">Aquecimento da base que está parada.</p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<!-- 3 STRATEGIC PILLARS -->
-<section class="py-16 px-4 md:px-12 bg-gray-50 w-full">
+<!-- PILARES ESTRATÉGICOS (MEIO) -->
+<section class="py-14 px-4 md:px-12 bg-[#F9F9F7] w-full text-center">
 <div class="max-w-6xl mx-auto">
-<div class="text-center mb-10">
-<h2 class="font-editorial text-3xl font-bold text-gray-900 flex items-center justify-center gap-3">
-<i class="fa-solid fa-landmark text-purple-600 text-2xl"></i> Os 3 Pilares Estratégicos
-                    </h2>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<!-- Pillar 1 -->
-<div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-purple-200 transition">
-<div class="w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-lg mb-4">1</div>
-<h3 class="font-bold text-gray-900 text-lg mb-2 uppercase tracking-wide flex items-center gap-2">
-<i class="fa-solid fa-bullseye text-purple-500"></i> Clareza
-                        </h3>
-<p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Posicionamento</p>
-<p class="text-sm text-gray-600 mb-3">Antes de postar, responda:</p>
-<ul class="text-sm text-gray-500 list-disc pl-5 space-y-2">
-<li>Para quem eu vendo?</li>
-<li>Em qual momento da vida ela está?</li>
-<li>Qual problema resolvo?</li>
-</ul>
-</div>
-<!-- Pillar 2 -->
-<div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-purple-200 transition">
-<div class="w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-lg mb-4">2</div>
-<h3 class="font-bold text-gray-900 text-lg mb-2 uppercase tracking-wide flex items-center gap-2">
-<i class="fa-regular fa-calendar-check text-purple-500"></i> Padrão
-                        </h3>
-<p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Mínimo Viável</p>
-<p class="text-sm text-gray-600 mb-3">O Meta entrega mais quando vê previsibilidade:</p>
+<h2 class="font-editorial text-3xl font-bold text-purple-900 mb-10 flex items-center justify-center gap-3">
+<i class="fa-solid fa-building-columns text-2xl"></i> Os 3 Pilares Estratégicos
+            </h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+<!-- Pilar 1 -->
+<div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:border-purple-200 transition relative overflow-hidden h-full">
+<div class="w-8 h-8 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold mb-4 shadow-md">1</div>
+<h3 class="font-bold text-gray-900 text-lg mb-1 flex items-center gap-2">
+<i class="fa-regular fa-id-badge text-purple-500"></i> CLAREZA
+                    </h3>
+<p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold mb-4">POSICIONAMENTO</p>
+<p class="text-sm text-gray-600 mb-3 font-medium">Antes de postar, responda:</p>
 <ul class="text-sm text-gray-500 space-y-2">
-<li class="flex justify-between border-b border-gray-50 pb-1"><span>Reels:</span> <span class="font-bold text-purple-600">1/dia (mín 5/sem)</span></li>
-<li class="flex justify-between border-b border-gray-50 pb-1"><span>Stories:</span> <span class="font-bold text-purple-600">Todos os dias (5-10)</span></li>
-<li class="flex justify-between"><span>Horários:</span> <span class="font-bold text-purple-600">11h-13h / 19h-21h</span></li>
+<li class="flex items-start gap-2"><span class="text-purple-400">•</span> Para quem eu vendo?</li>
+<li class="flex items-start gap-2"><span class="text-purple-400">•</span> Em qual momento da vida ela está?</li>
+<li class="flex items-start gap-2"><span class="text-purple-400">•</span> Qual problema resolvo?</li>
 </ul>
 </div>
-<!-- Pillar 3 -->
-<div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-purple-200 transition">
-<div class="w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-lg mb-4">3</div>
-<h3 class="font-bold text-gray-900 text-lg mb-2 uppercase tracking-wide flex items-center gap-2">
-<i class="fa-solid fa-clapperboard text-purple-500"></i> Estrutura
-                        </h3>
-<p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">De Vídeo</p>
-<div class="space-y-3">
-<div class="text-sm text-gray-600">
-<span class="font-bold text-purple-900">1. Gancho (0-2s):</span> "Esse vestido resolve..."
-                            </div>
-<div class="text-sm text-gray-600">
-<span class="font-bold text-purple-900">2. Mostra (3-8s):</span> Girar, andar, detalhes
-                            </div>
-<div class="text-sm text-gray-600">
-<span class="font-bold text-purple-900">3. CTA (Final):</span> "Me chama no Whats"
-                            </div>
+<!-- Pilar 2 -->
+<div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:border-purple-200 transition relative overflow-hidden h-full">
+<div class="w-8 h-8 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold mb-4 shadow-md">2</div>
+<h3 class="font-bold text-gray-900 text-lg mb-1 flex items-center gap-2">
+<i class="fa-regular fa-calendar-check text-purple-500"></i> PADRÃO
+                    </h3>
+<p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold mb-4">MÍNIMO VIÁVEL</p>
+<p class="text-sm text-gray-600 mb-3 font-medium">O Meta entrega mais quando vê previsibilidade:</p>
+<div class="space-y-3 text-sm">
+<div class="flex justify-between border-b border-gray-50 pb-1">
+<span class="text-gray-500">Reels:</span>
+<span class="text-purple-700 font-bold">1/dia (min 5/sem)</span>
+</div>
+<div class="flex justify-between border-b border-gray-50 pb-1">
+<span class="text-gray-500">Stories:</span>
+<span class="text-purple-700 font-bold">Todos os dias (5-10)</span>
+</div>
+<div class="flex justify-between">
+<span class="text-gray-500">Horários:</span>
+<span class="text-purple-700 font-bold">11h-13h / 19h-21h</span>
 </div>
 </div>
 </div>
-<!-- ENHANCED QUOTE SECTION -->
-<div class="mt-12 text-center">
-<div class="inline-block bg-purple-100 border border-purple-200 text-purple-900 px-8 md:px-12 py-6 rounded-2xl shadow-md animate-subtle-pulse transform hover:scale-105 transition duration-300">
-<p class="text-2xl md:text-3xl font-bold font-editorial">
-                        👉 Moda não vende roupa. <br class="md:hidden"/> Vende solução + emoção.
-                    </p>
+<!-- Pilar 3 -->
+<div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:border-purple-200 transition relative overflow-hidden h-full">
+<div class="w-8 h-8 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold mb-4 shadow-md">3</div>
+<h3 class="font-bold text-gray-900 text-lg mb-1 flex items-center gap-2">
+<i class="fa-solid fa-clapperboard text-purple-500"></i> ESTRUTURA
+                    </h3>
+<p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold mb-4">DE VÍDEO</p>
+<ul class="text-sm text-gray-600 space-y-4">
+<li>
+<strong class="text-purple-900 block mb-1">1. Gancho (0-2s):</strong>
+<span class="text-gray-500 italic">"Esse vestido resolve..."</span>
+</li>
+<li>
+<strong class="text-purple-900 block mb-1">2. Mostra (3-8s):</strong>
+<span class="text-gray-500 italic">Girar, andar, detalhes</span>
+</li>
+<li>
+<strong class="text-purple-900 block mb-1">3. CTA (Final):</strong>
+<span class="text-gray-500 italic">"Me chama no Whats"</span>
+</li>
+</ul>
 </div>
 </div>
 </div>
 </section>
-<!-- TOOLS & SHYNESS (Side by Side Desktop) -->
-<section class="py-12 px-4 md:px-12 bg-white w-full border-t border-gray-100">
-<div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
-<!-- Shyness -->
-<div class="bg-blue-50 rounded-xl p-8 border border-blue-100">
-<div class="flex items-center gap-3 mb-6">
-<span class="text-3xl">🙈</span>
-<h3 class="font-bold text-blue-900 text-xl">Tem vergonha de aparecer?</h3>
+<!-- MINDSET BANNER -->
+<section class="py-8 px-4 w-full bg-purple-50 border-y border-purple-100">
+<div class="max-w-4xl mx-auto text-center flex flex-col md:flex-row items-center justify-center gap-4">
+<span class="text-2xl">👉</span>
+<h2 class="font-editorial text-2xl md:text-3xl font-bold text-purple-900">
+                Moda não vende roupa. Vende solução + emoção.
+            </h2>
 </div>
-<blockquote class="border-l-4 border-blue-400 pl-4 italic text-blue-800 mb-6 bg-white/50 p-2 rounded-r">
-                        "Vergonha diminui com repetição, não com perfeição."
-                    </blockquote>
-<ul class="space-y-3">
-<li class="flex items-start gap-2 text-sm text-gray-700">
+</section>
+<!-- TUTORIALS (ACTION 2) -->
+<section class="py-14 px-4 md:px-12 bg-white w-full">
+<div class="max-w-6xl mx-auto">
+<div class="flex items-center gap-2 mb-8 justify-center md:justify-start">
+<span class="bg-purple-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">4</span>
+<h2 class="font-editorial text-2xl md:text-3xl font-bold text-gray-900">Tutoriais: Aprenda a Fazer</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Tutorial Cards -->
+<a class="block bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200 video-card cursor-pointer group hover:border-purple-300 transition-colors" href="https://www.youtube.com/results?search_query=como+gravar+primeiro+reels+loja+moda" rel="noopener noreferrer" target="_blank">
+<div class="bg-gray-50 h-36 flex items-center justify-center relative">
+<i class="fa-solid fa-mobile-screen text-4xl text-gray-300"></i>
+<div class="play-button w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white absolute shadow-lg transition-transform duration-300">
+<i class="fa-solid fa-play ml-1 text-sm"></i>
+</div>
+</div>
+<div class="p-4">
+<h4 class="font-bold text-gray-800 text-sm mb-1">Gravar o 1º Reel</h4>
+<p class="text-[10px] text-gray-500">Do enquadramento à luz.</p>
+</div>
+</a>
+<a class="block bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200 video-card cursor-pointer group hover:border-purple-300 transition-colors" href="https://www.youtube.com/results?search_query=como+tirar+fotos+de+roupas+para+vender+no+instagram" rel="noopener noreferrer" target="_blank">
+<div class="bg-gray-50 h-36 flex items-center justify-center relative">
+<i class="fa-solid fa-camera text-4xl text-gray-300"></i>
+<div class="play-button w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white absolute shadow-lg transition-transform duration-300">
+<i class="fa-solid fa-play ml-1 text-sm"></i>
+</div>
+</div>
+<div class="p-4">
+<h4 class="font-bold text-gray-800 text-sm mb-1">Foto Estática</h4>
+<p class="text-[10px] text-gray-500">Composições que vendem.</p>
+</div>
+</a>
+<a class="block bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200 video-card cursor-pointer group hover:border-purple-300 transition-colors" href="https://www.youtube.com/results?search_query=ideias+stories+loja+de+roupas" rel="noopener noreferrer" target="_blank">
+<div class="bg-gray-50 h-36 flex items-center justify-center relative">
+<i class="fa-brands fa-instagram text-4xl text-gray-300"></i>
+<div class="play-button w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white absolute shadow-lg transition-transform duration-300">
+<i class="fa-solid fa-play ml-1 text-sm"></i>
+</div>
+</div>
+<div class="p-4">
+<h4 class="font-bold text-gray-800 text-sm mb-1">Stories Rápidos</h4>
+<p class="text-[10px] text-gray-500">Roteiro de 5 minutos.</p>
+</div>
+</a>
+<a class="block bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200 video-card cursor-pointer group hover:border-purple-300 transition-colors" href="https://www.youtube.com/results?search_query=tutorial+capcut+reels+moda" rel="noopener noreferrer" target="_blank">
+<div class="bg-gray-50 h-36 flex items-center justify-center relative">
+<i class="fa-solid fa-wand-magic-sparkles text-4xl text-gray-300"></i>
+<div class="play-button w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white absolute shadow-lg transition-transform duration-300">
+<i class="fa-solid fa-play ml-1 text-sm"></i>
+</div>
+</div>
+<div class="p-4">
+<h4 class="font-bold text-gray-800 text-sm mb-1">Edição CapCut</h4>
+<p class="text-[10px] text-gray-500">Cortes e músicas fáceis.</p>
+</div>
+</a>
+</div>
+</div>
+</section>
+<!-- CONTENT LIBRARY (ACTION 3) -->
+<section class="py-14 px-4 md:px-12 bg-[#F9F9F7] w-full border-t border-gray-100">
+<div class="max-w-6xl mx-auto">
+<div class="text-center mb-10">
+<span class="bg-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold mx-auto mb-3">5</span>
+<h2 class="font-editorial text-3xl font-bold text-gray-900 mb-2">
+                    Biblioteca de Conteúdo Pronta
+                </h2>
+<p class="text-gray-500 text-sm">Copie, cole e venda.</p>
+</div>
+<!-- CAPTIONS -->
+<div class="mb-12">
+<h3 class="font-bold text-lg text-gray-800 mb-6 flex items-center gap-2 border-b border-gray-200 pb-3">
+<i class="fa-solid fa-pen-nib text-purple-600"></i> 8 Legendas Que Convertem
+                </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Include 4 key examples for brevity but assume full list exists in production -->
+<div class="bg-white p-4 rounded-lg border border-gray-100 hover:shadow-md transition">
+<div class="flex justify-between items-center mb-2">
+<span class="text-[9px] font-bold bg-purple-100 text-purple-700 px-2 py-0.5 rounded uppercase">Reposição</span>
+<button class="text-gray-400 hover:text-purple-600 text-xs copy-btn" onclick="navigator.clipboard.writeText(this.nextElementSibling.innerText); alert('Copiado!')"><i class="fa-regular fa-copy"></i></button>
+</div>
+<p class="text-[10px] text-gray-600 font-mono h-20 overflow-y-auto">Aquele que vocês pediram MUITO voltou! 😱 O [PEÇA] é perfeito porque [BENEFÍCIO].<br/>✨ Tam: P, M, G<br/>👇 Comente EU QUERO!</p>
+</div>
+<div class="bg-white p-4 rounded-lg border border-gray-100 hover:shadow-md transition">
+<div class="flex justify-between items-center mb-2">
+<span class="text-[9px] font-bold bg-green-100 text-green-700 px-2 py-0.5 rounded uppercase">Venda/Desejo</span>
+<button class="text-gray-400 hover:text-purple-600 text-xs copy-btn" onclick="navigator.clipboard.writeText(this.nextElementSibling.innerText); alert('Copiado!')"><i class="fa-regular fa-copy"></i></button>
+</div>
+<p class="text-[10px] text-gray-600 font-mono h-20 overflow-y-auto">3 motivos para amar esse look: 👇<br/>1️⃣ Tecido fresco<br/>2️⃣ Modela a cintura<br/>3️⃣ Vai do trabalho ao happy hour.<br/>🛍️ Link na bio!</p>
+</div>
+<div class="bg-white p-4 rounded-lg border border-gray-100 hover:shadow-md transition">
+<div class="flex justify-between items-center mb-2">
+<span class="text-[9px] font-bold bg-red-100 text-red-700 px-2 py-0.5 rounded uppercase">Objeção</span>
+<button class="text-gray-400 hover:text-purple-600 text-xs copy-btn" onclick="navigator.clipboard.writeText(this.nextElementSibling.innerText); alert('Copiado!')"><i class="fa-regular fa-copy"></i></button>
+</div>
+<p class="text-[10px] text-gray-600 font-mono h-20 overflow-y-auto">Medo de não servir? 🤔<br/>Relaxa! Temos uma tabela de medidas super detalhada e troca facilitada.<br/>📏 Confira nos destaques ou chame no Direct!</p>
+</div>
+<div class="bg-white p-4 rounded-lg border border-gray-100 hover:shadow-md transition">
+<div class="flex justify-between items-center mb-2">
+<span class="text-[9px] font-bold bg-pink-100 text-pink-700 px-2 py-0.5 rounded uppercase">Humanização</span>
+<button class="text-gray-400 hover:text-purple-600 text-xs copy-btn" onclick="navigator.clipboard.writeText(this.nextElementSibling.innerText); alert('Copiado!')"><i class="fa-regular fa-copy"></i></button>
+</div>
+<p class="text-[10px] text-gray-600 font-mono h-20 overflow-y-auto">Um pouco do nosso bastidor 💖<br/>Aqui na [LOJA], cada peça é embalada com muito amor e cheirinho.<br/>📦 Quem aí ama receber caixinha?</p>
+</div>
+</div>
+</div>
+<!-- REELS & STORIES -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+<div>
+<h3 class="font-bold text-lg text-gray-800 mb-6 flex items-center gap-2">
+<i class="fa-solid fa-video text-purple-600"></i> Roteiros de Reels (7-12s)
+                    </h3>
+<div class="space-y-4">
+<div class="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+<h4 class="font-bold text-purple-800 text-xs mb-1">1. "O Look Salvador"</h4>
+<p class="text-[10px] text-gray-600"><strong>0-2s:</strong> Cara de dúvida na frente do armário.<br/><strong>3-9s:</strong> Transição (pulo) aparecendo pronta e feliz.<br/><strong>10-12s:</strong> Aponta para "Link na Bio".</p>
+</div>
+<div class="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+<h4 class="font-bold text-purple-800 text-xs mb-1">2. "Detalhes que Encantam"</h4>
+<p class="text-[10px] text-gray-600"><strong>0-3s:</strong> Macro no tecido/botão (boa luz).<br/><strong>4-8s:</strong> Afasta mostrando peça inteira.<br/><strong>9-11s:</strong> Texto: "Qualidade Premium".</p>
+</div>
+</div>
+</div>
+<div>
+<h3 class="font-bold text-lg text-gray-800 mb-6 flex items-center gap-2">
+<i class="fa-solid fa-layer-group text-purple-600"></i> Sequências de Stories
+                    </h3>
+<div class="space-y-4">
+<div class="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+<h4 class="font-bold text-yellow-700 text-xs mb-1">Seq. 1: Bastidor Real</h4>
+<p class="text-[10px] text-gray-600">1. Foto café "Bom dia!"<br/>2. Arara bagunçada "Dia de organizar."<br/>3. Vídeo peça nova "Olha o que chegou..."</p>
+</div>
+<div class="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+<h4 class="font-bold text-yellow-700 text-xs mb-1">Seq. 2: Prova Social</h4>
+<p class="text-[10px] text-gray-600">1. "Olha quem apareceu 😍"<br/>2. Repost da cliente.<br/>3. "Amamos ver vocês! Compre aqui 👇" (Link).</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- VERGONHA & FERRAMENTAS & EVITAR -->
+<section class="py-14 px-4 md:px-12 bg-white w-full border-t border-gray-100">
+<div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 mb-12">
+<!-- Tem Vergonha? -->
+<div class="bg-blue-50 rounded-2xl p-8 border border-blue-100">
+<div class="flex items-center gap-3 mb-6">
+<div class="text-3xl">🙈</div>
+<h2 class="font-editorial text-2xl font-bold text-blue-900">Tem vergonha de aparecer?</h2>
+</div>
+<div class="border-l-4 border-blue-400 pl-4 py-2 mb-6">
+<p class="text-blue-800 italic font-medium">"Vergonha diminui com repetição, não com perfeição."</p>
+</div>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
 <i class="fa-solid fa-check text-blue-500 mt-1"></i>
-                            Comece filmando do pescoço para baixo
-                        </li>
-<li class="flex items-start gap-2 text-sm text-gray-700">
+<span class="text-sm text-gray-700">Comece filmando do pescoço para baixo</span>
+</li>
+<li class="flex items-start gap-3">
 <i class="fa-solid fa-check text-blue-500 mt-1"></i>
-                            Grave sem falar e adicione legenda/áudio depois
-                        </li>
-<li class="flex items-start gap-2 text-sm text-gray-700">
+<span class="text-sm text-gray-700">Grave sem falar e adicione legenda/áudio depois</span>
+</li>
+<li class="flex items-start gap-3">
 <i class="fa-solid fa-check text-blue-500 mt-1"></i>
-                            Fale para UMA amiga, não para a multidão
-                        </li>
+<span class="text-sm text-gray-700">Fale para UMA amiga, não para a multidão</span>
+</li>
 </ul>
 </div>
-<!-- Tools -->
-<div class="bg-white rounded-xl border border-gray-200 p-0 overflow-hidden shadow-sm">
-<div class="bg-gray-50 p-4 border-b border-gray-200 flex items-center gap-2">
-<span class="text-2xl">🛠️</span>
-<h3 class="font-bold text-gray-800 text-lg">Ferramentas Essenciais</h3>
+<!-- Ferramentas Essenciais -->
+<div class="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm">
+<div class="flex items-center gap-3 mb-6">
+<i class="fa-solid fa-wrench text-gray-700 text-xl"></i>
+<h2 class="font-editorial text-2xl font-bold text-gray-900">Ferramentas Essenciais</h2>
 </div>
+<div class="overflow-x-auto">
 <table class="w-full text-sm text-left">
-<thead class="text-xs text-gray-500 uppercase bg-gray-50">
-<tr>
-<th class="px-6 py-3">Ferramenta</th>
-<th class="px-6 py-3">Para que serve</th>
+<thead>
+<tr class="border-b border-gray-100 text-xs text-gray-400 uppercase tracking-wider">
+<th class="pb-3 font-bold">Ferramenta</th>
+<th class="pb-3 font-medium">Para que serve</th>
 </tr>
 </thead>
-<tbody class="divide-y divide-gray-100">
-<tr class="bg-white hover:bg-gray-50">
-<td class="px-6 py-3 font-bold text-gray-800">CapCut</td>
-<td class="px-6 py-3 text-gray-600">Edição de vídeos</td>
+<tbody class="text-gray-600">
+<tr class="border-b border-gray-50">
+<td class="py-3 font-bold text-gray-800">CapCut</td>
+<td class="py-3">Edição de vídeos</td>
 </tr>
-<tr class="bg-white hover:bg-gray-50">
-<td class="px-6 py-3 font-bold text-gray-800">Canva</td>
-<td class="px-6 py-3 text-gray-600">Artes e designs</td>
+<tr class="border-b border-gray-50">
+<td class="py-3 font-bold text-gray-800">Canva</td>
+<td class="py-3">Artes e designs</td>
 </tr>
-<tr class="bg-white hover:bg-gray-50">
-<td class="px-6 py-3 font-bold text-gray-800">InShot</td>
-<td class="px-6 py-3 text-gray-600">Edição mobile rápida</td>
+<tr class="border-b border-gray-50">
+<td class="py-3 font-bold text-gray-800">InShot</td>
+<td class="py-3">Edição mobile rápida</td>
 </tr>
-<tr class="bg-white hover:bg-gray-50">
-<td class="px-6 py-3 font-bold text-gray-800">Lightroom</td>
-<td class="px-6 py-3 text-gray-600">Ajuste de fotos</td>
+<tr class="border-b border-gray-50">
+<td class="py-3 font-bold text-gray-800">Lightroom</td>
+<td class="py-3">Ajuste de fotos</td>
 </tr>
-<tr class="bg-white hover:bg-gray-50">
-<td class="px-6 py-3 font-bold text-gray-800">Snapseed</td>
-<td class="px-6 py-3 text-gray-600">Edição rápida</td>
+<tr>
+<td class="py-3 font-bold text-gray-800">Snapseed</td>
+<td class="py-3">Edição rápida</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-</section>
-<!-- WHAT TO AVOID -->
-<section class="py-10 px-4 md:px-12 bg-white w-full">
-<div class="max-w-4xl mx-auto">
-<div class="bg-red-50 border-l-4 border-red-500 rounded-lg p-6 md:p-8">
-<h3 class="text-red-700 font-bold text-lg mb-4 flex items-center gap-2">
+</div>
+<!-- O Que Evitar -->
+<div class="max-w-4xl mx-auto bg-red-50 border border-red-100 rounded-xl p-8 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-2 h-full bg-red-500"></div>
+<h3 class="font-bold text-red-800 text-xl mb-6 flex items-center gap-2">
 <i class="fa-solid fa-ban"></i> O Que EVITAR
-                    </h3>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div class="flex items-center gap-2 text-red-800 text-sm">
-<div class="w-1.5 h-1.5 bg-red-500 rounded-full"></div>
-                            Vídeos longos (acima de 30s)
-                        </div>
-<div class="flex items-center gap-2 text-red-800 text-sm">
-<div class="w-1.5 h-1.5 bg-red-500 rounded-full"></div>
-                            Música estourada sem voz/explicação
-                        </div>
-<div class="flex items-center gap-2 text-red-800 text-sm">
-<div class="w-1.5 h-1.5 bg-red-500 rounded-full"></div>
-                            Mostrar só preço sem gerar desejo
-                        </div>
-<div class="flex items-center gap-2 text-red-800 text-sm">
-<div class="w-1.5 h-1.5 bg-red-500 rounded-full"></div>
-                            Copiar trends que não combinam
-                        </div>
+            </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-red-400"></div>
+<span class="text-sm text-red-900 font-medium">Vídeos longos (acima de 30s)</span>
 </div>
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-red-400"></div>
+<span class="text-sm text-red-900 font-medium">Música estourada sem voz/explicação</span>
 </div>
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-red-400"></div>
+<span class="text-sm text-red-900 font-medium">Mostrar só preço sem gerar desejo</span>
 </div>
-</section>
-<!-- PRACTICAL STEPS -->
-<section class="py-12 px-4 md:px-12 bg-[#F9F9F7] w-full">
-<div class="max-w-4xl mx-auto">
-<div class="flex items-center gap-3 mb-8">
-<span class="text-3xl">👣</span>
-<h2 class="font-editorial text-2xl font-bold text-gray-900">Passo a Passo Prático</h2>
-</div>
-<div class="space-y-6">
-<!-- Step 1 -->
-<div class="flex gap-4 items-start">
-<div class="flex-shrink-0 w-10 h-10 bg-[#1D9BF0] text-white rounded-full flex items-center justify-center font-bold shadow-sm">1</div>
-<div>
-<h4 class="font-bold text-gray-900 text-base">Ajustar a Bio (Primeiros dias)</h4>
-<p class="text-sm text-gray-600 mt-1">Remova inglês/hashtags inúteis. Deixe claro: O que é, Onde é, Como compra.</p>
-</div>
-</div>
-<!-- Step 2 -->
-<div class="flex gap-4 items-start">
-<div class="flex-shrink-0 w-10 h-10 bg-[#1D9BF0] text-white rounded-full flex items-center justify-center font-bold shadow-sm">2</div>
-<div>
-<h4 class="font-bold text-gray-900 text-base">Organizar Destaques (Semana 1)</h4>
-<p class="text-sm text-gray-600 mt-1">Crie os 4 essenciais: Novidades, Provador, Loja, WhatsApp. Use capas da mesma cor.</p>
-</div>
-</div>
-<!-- Step 3 -->
-<div class="flex gap-4 items-start">
-<div class="flex-shrink-0 w-10 h-10 bg-[#1D9BF0] text-white rounded-full flex items-center justify-center font-bold shadow-sm">3</div>
-<div>
-<h4 class="font-bold text-gray-900 text-base">Primeiro Reel "Fase 1" (Semana 1-2)</h4>
-<p class="text-sm text-gray-600 mt-1">Grave 10s mostrando um look completo girando. Adicione texto: "Aquele look que resolve o final de semana".</p>
-</div>
-</div>
-<!-- Step 4 -->
-<div class="flex gap-4 items-start">
-<div class="flex-shrink-0 w-10 h-10 bg-[#1D9BF0] text-white rounded-full flex items-center justify-center font-bold shadow-sm">4</div>
-<div>
-<h4 class="font-bold text-gray-900 text-base">Legenda Estratégica (Toda semana)</h4>
-<p class="text-sm text-gray-600 mt-1">Use a fórmula: Frase de conversa + Benefício + CTA. Ex: "Tecido que não amassa. Me chama no link pra garantir."</p>
-</div>
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-red-400"></div>
+<span class="text-sm text-red-900 font-medium">Copiar trends que não combinam</span>
 </div>
 </div>
 </div>
 </section>
 <!-- CHECKLIST SECTION -->
 <section class="py-16 px-4 md:px-12 bg-white w-full border-t border-gray-100">
-<div class="max-w-5xl mx-auto">
+<div class="max-w-6xl mx-auto">
 <div class="flex items-center gap-3 mb-8">
 <div class="bg-green-100 p-2 rounded-lg text-green-600"><i class="fa-solid fa-check text-xl"></i></div>
 <h2 class="font-editorial text-2xl md:text-3xl font-bold text-gray-900">Seu Checklist de Implementação</h2>
 </div>
-<p class="text-sm text-gray-500 mb-8 ml-12">Marque conforme for concluindo. Seu progresso será salvo automaticamente.</p>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10" id="checklist-container">
-<!-- Cat: Perfil e Base -->
-<div>
-<h3 class="font-bold text-gray-800 mb-4 flex items-center gap-2 border-b pb-2">
-<span class="text-xl">📝</span> Perfil e Base
-                        </h3>
-<div class="space-y-3">
-<label class="flex items-start gap-3 cursor-pointer group">
-<input class="check-custom mt-1 w-4 h-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500 cursor-pointer" type="checkbox"/>
-<div class="text-sm text-gray-600 group-hover:text-purple-700 transition">Bio clara (O que vende + Para quem + CTA)</div>
-</label>
-<label class="flex items-start gap-3 cursor-pointer group">
-<input class="check-custom mt-1 w-4 h-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500 cursor-pointer" type="checkbox"/>
-<div class="text-sm text-gray-600 group-hover:text-purple-700 transition">Destaques organizados (Novidades | Provador | Loja)</div>
-</label>
-<label class="flex items-start gap-3 cursor-pointer group">
-<input class="check-custom mt-1 w-4 h-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500 cursor-pointer" type="checkbox"/>
-<div class="text-sm text-gray-600 group-hover:text-purple-700 transition">Link funcional (WhatsApp/Site)</div>
-</label>
-<label class="flex items-start gap-3 cursor-pointer group">
-<input class="check-custom mt-1 w-4 h-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500 cursor-pointer" type="checkbox"/>
-<div class="text-sm text-gray-600 group-hover:text-purple-700 transition">Foto de perfil profissional</div>
-</label>
-</div>
-</div>
-<!-- Cat: Conteúdo -->
-<div>
-<h3 class="font-bold text-gray-800 mb-4 flex items-center gap-2 border-b pb-2">
-<span class="text-xl">🎥</span> Conteúdo
-                        </h3>
-<div class="space-y-3">
-<label class="flex items-start gap-3 cursor-pointer group">
-<input class="check-custom mt-1 w-4 h-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500 cursor-pointer" type="checkbox"/>
-<div class="text-sm text-gray-600 group-hover:text-purple-700 transition">3 a 5 Reels por semana publicados</div>
-</label>
-<label class="flex items-start gap-3 cursor-pointer group">
-<input class="check-custom mt-1 w-4 h-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500 cursor-pointer" type="checkbox"/>
-<div class="text-sm text-gray-600 group-hover:text-purple-700 transition">Vídeos curtos (7–12s)</div>
-</label>
-<label class="flex items-start gap-3 cursor-pointer group">
-<input class="check-custom mt-1 w-4 h-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500 cursor-pointer" type="checkbox"/>
-<div class="text-sm text-gray-600 group-hover:text-purple-700 transition">Peças com movimento e fundo limpo</div>
-</label>
-<label class="flex items-start gap-3 cursor-pointer group">
-<input class="check-custom mt-1 w-4 h-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500 cursor-pointer" type="checkbox"/>
-<div class="text-sm text-gray-600 group-hover:text-purple-700 transition">Boa iluminação em todos os vídeos</div>
-</label>
-</div>
-</div>
+<p class="text-sm text-gray-500 mb-8 ml-12">Marque conforme for concluindo. Seu progresso é salvo automaticamente.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" id="checklist-container">
 <!-- Cat: Linguagem -->
 <div>
 <h3 class="font-bold text-gray-800 mb-4 flex items-center gap-2 border-b pb-2">
 <span class="text-xl">🗣️</span> Linguagem
-                        </h3>
+                    </h3>
 <div class="space-y-3">
 <label class="flex items-start gap-3 cursor-pointer group">
 <input class="check-custom mt-1 w-4 h-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500 cursor-pointer" type="checkbox"/>
@@ -480,11 +579,11 @@
 <div>
 <h3 class="font-bold text-gray-800 mb-4 flex items-center gap-2 border-b pb-2">
 <span class="text-xl">🤳</span> Stories
-                        </h3>
+                    </h3>
 <div class="space-y-3">
 <label class="flex items-start gap-3 cursor-pointer group">
 <input class="check-custom mt-1 w-4 h-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500 cursor-pointer" type="checkbox"/>
-<div class="text-sm text-gray-600 group-hover:text-purple-700 transition">Postando todos os dias (3–5 stories mínimo)</div>
+<div class="text-sm text-gray-600 group-hover:text-purple-700 transition">Postando todos os dias (3–5 min)</div>
 </label>
 <label class="flex items-start gap-3 cursor-pointer group">
 <input class="check-custom mt-1 w-4 h-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500 cursor-pointer" type="checkbox"/>
@@ -496,23 +595,67 @@
 </label>
 </div>
 </div>
+<!-- Cat: Conteúdo -->
+<div>
+<h3 class="font-bold text-gray-800 mb-4 flex items-center gap-2 border-b pb-2">
+<span class="text-xl">🎥</span> Conteúdo
+                    </h3>
+<div class="space-y-3">
+<label class="flex items-start gap-3 cursor-pointer group">
+<input class="check-custom mt-1 w-4 h-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500 cursor-pointer" type="checkbox"/>
+<div class="text-sm text-gray-600 group-hover:text-purple-700 transition">3 a 5 Reels por semana</div>
+</label>
+<label class="flex items-start gap-3 cursor-pointer group">
+<input class="check-custom mt-1 w-4 h-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500 cursor-pointer" type="checkbox"/>
+<div class="text-sm text-gray-600 group-hover:text-purple-700 transition">Vídeos curtos (7–12s)</div>
+</label>
+<label class="flex items-start gap-3 cursor-pointer group">
+<input class="check-custom mt-1 w-4 h-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500 cursor-pointer" type="checkbox"/>
+<div class="text-sm text-gray-600 group-hover:text-purple-700 transition">Peças com movimento/fundo limpo</div>
+</label>
+<label class="flex items-start gap-3 cursor-pointer group">
+<input class="check-custom mt-1 w-4 h-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500 cursor-pointer" type="checkbox"/>
+<div class="text-sm text-gray-600 group-hover:text-purple-700 transition">Boa iluminação em todos</div>
+</label>
+</div>
+</div>
+<!-- Cat: Perfil e Base -->
+<div>
+<h3 class="font-bold text-gray-800 mb-4 flex items-center gap-2 border-b pb-2">
+<span class="text-xl">📝</span> Perfil e Base
+                    </h3>
+<div class="space-y-3">
+<label class="flex items-start gap-3 cursor-pointer group">
+<input class="check-custom mt-1 w-4 h-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500 cursor-pointer" type="checkbox"/>
+<div class="text-sm text-gray-600 group-hover:text-purple-700 transition">Bio clara (Vende + Quem + Link)</div>
+</label>
+<label class="flex items-start gap-3 cursor-pointer group">
+<input class="check-custom mt-1 w-4 h-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500 cursor-pointer" type="checkbox"/>
+<div class="text-sm text-gray-600 group-hover:text-purple-700 transition">Destaques organizados</div>
+</label>
+<label class="flex items-start gap-3 cursor-pointer group">
+<input class="check-custom mt-1 w-4 h-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500 cursor-pointer" type="checkbox"/>
+<div class="text-sm text-gray-600 group-hover:text-purple-700 transition">Foto de perfil profissional</div>
+</label>
+</div>
+</div>
 </div>
 </div>
 </section>
-<!-- RESOURCES SECTION -->
-<section class="py-12 px-4 md:px-12 bg-gray-50 border-t border-gray-100 w-full">
+<!-- RECURSOS EXTRAS (ACTION 4 - NEW) -->
+<section class="py-14 px-4 md:px-12 bg-[#F5F3FF] w-full border-t border-gray-100">
 <div class="max-w-6xl mx-auto">
-<h2 class="font-editorial text-2xl font-bold text-gray-900 mb-6 text-center">Recursos Extras ✨</h2>
-<h3 class="text-center text-purple-700 font-bold mb-8">Escolha o Modelo de Bio ideal para seu negócio</h3>
+<div class="flex items-center gap-2 mb-8 justify-center md:justify-start">
+<span class="bg-purple-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold"><i class="fa-solid fa-star text-[10px]"></i></span>
+<h2 class="font-editorial text-2xl font-bold text-gray-900">Recursos Extras ✨</h2>
+</div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<!-- Model 1: WhatsApp (Direct Sales) -->
-<div class="bg-white p-6 rounded-xl border border-purple-100 shadow-sm hover:shadow-md transition">
-<h4 class="font-bold text-purple-900 mb-3 flex items-center text-sm gap-2">
-<i class="fa-brands fa-whatsapp text-green-500 text-lg"></i>
-<span>Venda Direta (WhatsApp)</span>
-</h4>
-<p class="text-xs text-gray-500 mb-3">Ideal para quem atende um a um e fecha venda no Whats.</p>
-<div class="bg-gray-50 p-4 rounded border border-purple-100 text-xs font-mono text-gray-600 leading-relaxed">
+<!-- Model 1 -->
+<div class="bg-white p-6 rounded-xl border border-purple-100 hover:border-purple-300 shadow-sm transition group">
+<h4 class="font-bold text-purple-900 mb-3 text-sm flex items-center gap-2"><i class="fa-brands fa-whatsapp text-green-500"></i> Venda Direta (WhatsApp)</h4>
+<p class="text-[10px] text-gray-400 mb-3">Ideal para quem atende um a um e fecha venda no Whats.</p>
+<div class="bg-gray-50 p-4 rounded border border-purple-50 text-xs font-mono text-gray-600 leading-relaxed relative group-hover:bg-white transition">
+<button class="absolute top-2 right-2 text-gray-300 hover:text-purple-600 copy-btn transition" onclick="navigator.clipboard.writeText(this.parentElement.innerText); alert('Bio Copiada!')"><i class="fa-regular fa-copy"></i></button>
 <p>✨ [NOME_DA_LOJA] | Moda [SEU_ESTILO]</p>
 <p>👗 Looks que valorizam você</p>
 <p>📍 [SUA_CIDADE] | Enviamos p/ Brasil 🇧🇷</p>
@@ -520,14 +663,12 @@
 <p class="text-blue-500 underline">[LINK_WHATSAPP]</p>
 </div>
 </div>
-<!-- Model 2: E-commerce (Website) -->
-<div class="bg-white p-6 rounded-xl border border-purple-100 shadow-sm hover:shadow-md transition">
-<h4 class="font-bold text-purple-900 mb-3 flex items-center text-sm gap-2">
-<i class="fa-solid fa-globe text-blue-500 text-lg"></i>
-<span>E-commerce (Site)</span>
-</h4>
-<p class="text-xs text-gray-500 mb-3">Para lojas com site próprio e catálogo automático.</p>
-<div class="bg-gray-50 p-4 rounded border border-purple-100 text-xs font-mono text-gray-600 leading-relaxed">
+<!-- Model 2 -->
+<div class="bg-white p-6 rounded-xl border border-purple-100 hover:border-purple-300 shadow-sm transition group">
+<h4 class="font-bold text-purple-900 mb-3 text-sm flex items-center gap-2"><i class="fa-solid fa-globe text-blue-500"></i> E-commerce (Site)</h4>
+<p class="text-[10px] text-gray-400 mb-3">Para lojas com site próprio e catálogo automático.</p>
+<div class="bg-gray-50 p-4 rounded border border-purple-50 text-xs font-mono text-gray-600 leading-relaxed relative group-hover:bg-white transition">
+<button class="absolute top-2 right-2 text-gray-300 hover:text-purple-600 copy-btn transition" onclick="navigator.clipboard.writeText(this.parentElement.innerText); alert('Bio Copiada!')"><i class="fa-regular fa-copy"></i></button>
 <p>🛍️ [NOME_DA_LOJA] | Desde 2020</p>
 <p>✨ Realçando sua beleza natural</p>
 <p>📦 Frete Grátis acima de R$299</p>
@@ -535,14 +676,12 @@
 <p class="text-blue-500 underline">www.[SEUSITE].com.br</p>
 </div>
 </div>
-<!-- Model 3: Multiple Channels (Linktree) -->
-<div class="bg-white p-6 rounded-xl border border-purple-100 shadow-sm hover:shadow-md transition">
-<h4 class="font-bold text-purple-900 mb-3 flex items-center text-sm gap-2">
-<i class="fa-solid fa-layer-group text-purple-500 text-lg"></i>
-<span>Múltiplos Canais (Linktree)</span>
-</h4>
-<p class="text-xs text-gray-500 mb-3">Se você tem Site, WhatsApp e outras redes.</p>
-<div class="bg-gray-50 p-4 rounded border border-purple-100 text-xs font-mono text-gray-600 leading-relaxed">
+<!-- Model 3 -->
+<div class="bg-white p-6 rounded-xl border border-purple-100 hover:border-purple-300 shadow-sm transition group">
+<h4 class="font-bold text-purple-900 mb-3 text-sm flex items-center gap-2"><i class="fa-solid fa-store text-purple-500"></i> Múltiplos Canais</h4>
+<p class="text-[10px] text-gray-400 mb-3">Se você tem Site, WhatsApp e outras redes.</p>
+<div class="bg-gray-50 p-4 rounded border border-purple-50 text-xs font-mono text-gray-600 leading-relaxed relative group-hover:bg-white transition">
+<button class="absolute top-2 right-2 text-gray-300 hover:text-purple-600 copy-btn transition" onclick="navigator.clipboard.writeText(this.parentElement.innerText); alert('Bio Copiada!')"><i class="fa-regular fa-copy"></i></button>
 <p>🦋 [NOME_DA_LOJA] | [SEU_NICHO]</p>
 <p>✨ Inspiração diária nos Stories</p>
 <p>📍 Loja Física: [ENDEREÇO_CURTO]</p>
@@ -553,179 +692,69 @@
 </div>
 </div>
 </section>
-<!-- NEW TEMPLATES SECTION -->
-<section class="py-16 px-4 md:px-12 bg-white w-full border-t border-gray-100">
-<div class="max-w-6xl mx-auto">
-<h2 class="font-editorial text-3xl font-bold text-gray-900 mb-8 text-center flex items-center justify-center gap-3">
-<i class="fa-regular fa-copy text-purple-500"></i> Templates Prontos
-                </h2>
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
-<!-- Subsection A: Feed -->
-<div class="col-span-1 lg:col-span-1">
-<h3 class="font-bold text-xl text-gray-800 mb-6 flex items-center gap-2">
-<span class="bg-purple-100 text-purple-600 w-8 h-8 rounded-full flex items-center justify-center text-sm">A</span>
-                        Feed (Posts)
-                    </h3>
-<div class="space-y-4">
-<!-- Feed Type 1 -->
-<div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
-<span class="text-[10px] font-bold bg-blue-100 text-blue-600 px-2 py-1 rounded uppercase">Carrossel Educativo</span>
-<p class="text-sm text-gray-700 mt-2 font-mono"><strong>Capa:</strong> "3 Formas de Usar [PEÇA]"<br/><strong>Slide 2:</strong> Look Trabalho<br/><strong>Slide 3:</strong> Look Passeio<br/><strong>Slide 4:</strong> Look Jantar<br/><strong>Legenda:</strong> "Versatilidade é tudo! Qual combina mais com você? 👇"</p>
-</div>
-<!-- Feed Type 2 -->
-<div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
-<span class="text-[10px] font-bold bg-green-100 text-green-600 px-2 py-1 rounded uppercase">Foto Editorial</span>
-<p class="text-sm text-gray-700 mt-2 font-mono"><strong>Foto:</strong> Foto de alta qualidade, luz natural, fundo limpo, modelo sorrindo.<br/><strong>Legenda:</strong> "Aquele look que te faz sorrir. ✨ Disponível em 3 cores. Toque na sacolinha para ver."</p>
-</div>
-<!-- Feed Type 3 -->
-<div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
-<span class="text-[10px] font-bold bg-purple-100 text-purple-600 px-2 py-1 rounded uppercase">Combo de Looks</span>
-<p class="text-sm text-gray-700 mt-2 font-mono"><strong>Foto:</strong> Flatlay (roupas dobradas/organizadas) de 2-3 peças que combinam.<br/><strong>Legenda:</strong> "Montei esse combo perfeito para o fim de semana. Blusa X + Calça Y. Leve o conjunto com 10% OFF!"</p>
-</div>
-</div>
-</div>
-<!-- Subsection B: Reels -->
-<div class="col-span-1 lg:col-span-1">
-<h3 class="font-bold text-xl text-gray-800 mb-6 flex items-center gap-2">
-<span class="bg-purple-100 text-purple-600 w-8 h-8 rounded-full flex items-center justify-center text-sm">B</span>
-                        Reels (Roteiros)
-                    </h3>
-<div class="space-y-4">
-<!-- Existing Script 1 -->
-<div class="bg-white border border-purple-200 rounded-xl p-4 shadow-sm">
-<h4 class="font-bold text-purple-800 text-xs mb-2">🎥 Roteiro 1: "O Look Salvador"</h4>
-<p class="text-xs text-gray-600"><strong>0-2s:</strong> Cara de dúvida ("O que vestir?").<br/><strong>3-9s:</strong> Transição rápida para look completo, girando feliz.<br/><strong>10-12s:</strong> Aponta para "Link na Bio".</p>
-</div>
-<!-- Existing Script 2 -->
-<div class="bg-white border border-purple-200 rounded-xl p-4 shadow-sm">
-<h4 class="font-bold text-purple-800 text-xs mb-2">🎥 Roteiro 2: "Detalhes"</h4>
-<p class="text-xs text-gray-600"><strong>0-3s:</strong> Close no tecido ("Acabamento premium").<br/><strong>4-8s:</strong> Mostra caimento/movimento.<br/><strong>9-11s:</strong> Texto: "Disponível P, M, G".</p>
-</div>
-<!-- Existing Script 3 -->
-<div class="bg-white border border-purple-200 rounded-xl p-4 shadow-sm">
-<h4 class="font-bold text-purple-800 text-xs mb-2">🎥 Roteiro 3: "3 Estilos"</h4>
-<p class="text-xs text-gray-600"><strong>0-2s:</strong> Segurando peça ("1 Peça, 3 Looks").<br/><strong>3-9s:</strong> Cortes rápidos: Tênis, Salto, Blazer.<br/><strong>10-12s:</strong> "Qual seu preferido?".</p>
-</div>
-<!-- New Script 4 -->
-<div class="bg-white border border-purple-200 rounded-xl p-4 shadow-sm">
-<h4 class="font-bold text-purple-800 text-xs mb-2">🎥 Roteiro 4: "Arrumes-se Comigo"</h4>
-<p class="text-xs text-gray-600"><strong>0-3s:</strong> Mostra as peças separadas na cama.<br/><strong>4-9s:</strong> Vestindo (cortes rápidos): calça &gt; blusa &gt; sapato &gt; acessório.<br/><strong>10-12s:</strong> Look final no espelho + beijo.</p>
-</div>
-<!-- New Script 5 -->
-<div class="bg-white border border-purple-200 rounded-xl p-4 shadow-sm">
-<h4 class="font-bold text-purple-800 text-xs mb-2">🎥 Roteiro 5: "Bastidores Envio"</h4>
-<p class="text-xs text-gray-600"><strong>0-3s:</strong> Dobrando a peça com carinho.<br/><strong>4-8s:</strong> Colocando perfume/mimo na caixa e fechando.<br/><strong>9-12s:</strong> "Seu pedido está chegando! 📦".</p>
-</div>
-</div>
-</div>
-<!-- Subsection C: Stories -->
-<div class="col-span-1 lg:col-span-1">
-<h3 class="font-bold text-xl text-gray-800 mb-6 flex items-center gap-2">
-<span class="bg-purple-100 text-purple-600 w-8 h-8 rounded-full flex items-center justify-center text-sm">C</span>
-                        Stories (Sequências)
-                    </h3>
-<div class="space-y-4">
-<!-- Story Seq 1 -->
-<div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
-<h4 class="font-bold text-yellow-800 text-xs mb-2">📱 Seq. 1: Lançamento</h4>
-<p class="text-xs text-gray-600"><strong>Tela 1:</strong> "Vocês não estão prontas..." (Spoiler)<br/><strong>Tela 2:</strong> Foto detalhe preto e branco.<br/><strong>Tela 3:</strong> "Amanhã 10h!" (Contagem regressiva).</p>
-</div>
-<!-- Story Seq 2 -->
-<div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
-<h4 class="font-bold text-yellow-800 text-xs mb-2">📱 Seq. 2: Bastidor</h4>
-<p class="text-xs text-gray-600"><strong>Tela 1:</strong> Foto do café/computador "Começando o dia!"<br/><strong>Tela 2:</strong> Araras organizadas/novidades chegando.<br/><strong>Tela 3:</strong> "Muitas novidades hoje, fiquem ligadas!".</p>
-</div>
-<!-- Story Seq 3 -->
-<div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
-<h4 class="font-bold text-yellow-800 text-xs mb-2">📱 Seq. 3: Prova Social</h4>
-<p class="text-xs text-gray-600"><strong>Tela 1:</strong> "Olha quem apareceu por aqui 😍"<br/><strong>Tela 2:</strong> Repost da cliente usando o look.<br/><strong>Tela 3:</strong> Foto do produto usado + Link compra.</p>
-</div>
-<!-- Story Seq 4 -->
-<div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
-<h4 class="font-bold text-yellow-800 text-xs mb-2">📱 Seq. 4: Urgência</h4>
-<p class="text-xs text-gray-600"><strong>Tela 1:</strong> Foto de poucas unidades "Quase esgotando!"<br/><strong>Tela 2:</strong> "Só restam 2 no M!"<br/><strong>Tela 3:</strong> "Corre pro site" (Link adesivo).</p>
-</div>
-<!-- Story Seq 5 -->
-<div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
-<h4 class="font-bold text-yellow-800 text-xs mb-2">📱 Seq. 5: Dúvida Comum</h4>
-<p class="text-xs text-gray-600"><strong>Tela 1:</strong> Caixinha de perguntas "Dúvidas sobre tamanhos?"<br/><strong>Tela 2:</strong> Vídeo explicando medidas/tecido.<br/><strong>Tela 3:</strong> Tabela de medidas + Link.</p>
-</div>
-<!-- Story Seq 6 -->
-<div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
-<h4 class="font-bold text-yellow-800 text-xs mb-2">📱 Seq. 6: Provador Honesto</h4>
-<p class="text-xs text-gray-600"><strong>Tela 1:</strong> "Provando novidades no corpo"<br/><strong>Tela 2:</strong> Vídeo falando do caimento/conforto.<br/><strong>Tela 3:</strong> Foto look completo + Link.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
 <!-- GATE & CONCLUSION -->
-<section class="py-16 md:py-20 px-4 md:px-12 gate-pattern bg-white mb-0 w-full">
+<section class="py-16 md:py-20 px-4 md:px-12 bg-white mb-0 w-full border-t border-gray-100">
 <div class="max-w-3xl mx-auto text-center">
 <div class="inline-block p-4 rounded-full bg-green-100 text-green-600 text-2xl md:text-3xl mb-6 shadow-sm">
 <i class="fa-solid fa-check-double"></i>
 </div>
 <h2 class="font-editorial text-3xl md:text-4xl font-bold text-gray-900 mb-4">Etapa CONCLUÍDA</h2>
 <p class="text-base md:text-lg text-gray-600 mb-8 max-w-xl mx-auto leading-relaxed">
-                    Para desbloquear a <span class="font-bold text-purple-600">Fase 2 (Estrutura)</span>, entre em contato com seu gestor de tráfego DigitalDM.
-                </p>
-<div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl border border-purple-100 max-w-xl mx-auto transform hover:-translate-y-1 transition duration-300">
-<button class="w-full bg-purple-600 opacity-50 cursor-not-allowed text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-full shadow-lg flex items-center justify-center gap-3 text-base md:text-lg group" disabled="">
+                Você organizou a casa! Agora que sua base está pronta, vamos para a estrutura de crescimento. Para desbloquear a <span class="font-bold text-purple-600">Fase 2 (Estrutura)</span>, entre em contato com seu gestor.
+            </p>
+<div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl border border-purple-100 max-w-2xl mx-auto transform hover:-translate-y-1 transition duration-300">
+<button class="w-full bg-purple-100 text-purple-800 font-bold py-3 md:py-4 px-6 md:px-8 rounded-full shadow-inner flex items-center justify-center gap-3 text-sm md:text-base cursor-not-allowed opacity-100" disabled="">
 <i class="fa-brands fa-whatsapp text-xl md:text-2xl"></i>
-<span>Fale com seu Gestor da DigitalDM no Grupo de WhatsApp e peça a liberação da Fase 2 (Estrutura)</span>
+<span>Fale com seu Gestor da DigitalDM no grupo de WhatsApp e peça a liberação da fase 2 (Estrutura)</span>
 </button>
 </div>
 </div>
 </section>
 </div>
 <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const checkboxes = document.querySelectorAll('.check-custom');
-            const progressBar = document.getElementById('progress-bar');
-            const progressText = document.getElementById('progress-text');
-            const progressMessage = document.getElementById('progress-message');
-            const totalItems = checkboxes.length;
-            
-            // Load saved state
-            checkboxes.forEach((checkbox, index) => {
-                const savedState = localStorage.getItem(`fase1_check_${index}`);
-                if (savedState === 'true') {
-                    checkbox.checked = true;
-                }
-                
-                checkbox.addEventListener('change', function() {
-                    localStorage.setItem(`fase1_check_${index}`, this.checked);
-                    updateProgress();
-                });
-            });
-            
-            function updateProgress() {
-                const checkedCount = document.querySelectorAll('.check-custom:checked').length;
-                const percentage = Math.round((checkedCount / totalItems) * 100);
-                
-                // Update UI
-                progressBar.style.width = `${percentage}%`;
-                progressText.textContent = `${percentage}%`;
-                
-                // Update Message based on progress
-                if (percentage === 0) {
-                    progressMessage.textContent = "Comece marcando os itens na seção checklist para ativar seu progresso.";
-                    progressMessage.className = "text-[10px] text-center text-gray-400 mt-1";
-                } else if (percentage < 50) {
-                    progressMessage.textContent = "Ótimo começo! Continue assim.";
-                    progressMessage.className = "text-[10px] text-center text-blue-500 font-medium mt-1";
-                } else if (percentage < 100) {
-                    progressMessage.textContent = "Quase lá! Falta pouco para terminar.";
-                    progressMessage.className = "text-[10px] text-center text-purple-500 font-medium mt-1";
-                } else {
-                    progressMessage.textContent = "Parabéns! Fase 1 concluída com sucesso! 🎉";
-                    progressMessage.className = "text-[10px] text-center text-green-600 font-bold mt-1";
-                }
+    document.addEventListener('DOMContentLoaded', function() {
+        const checkboxes = document.querySelectorAll('.check-custom');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        const progressMessage = document.getElementById('progress-message');
+        const totalItems = checkboxes.length;
+        
+        checkboxes.forEach((checkbox, index) => {
+            const savedState = localStorage.getItem(`fase1_check_${index}`);
+            if (savedState === 'true') {
+                checkbox.checked = true;
             }
             
-            // Initial update
-            updateProgress();
+            checkbox.addEventListener('change', function() {
+                localStorage.setItem(`fase1_check_${index}`, this.checked);
+                updateProgress();
+            });
         });
-    </script>
-</body></html>
+        
+        function updateProgress() {
+            const checkedCount = document.querySelectorAll('.check-custom:checked').length;
+            const percentage = Math.round((checkedCount / totalItems) * 100);
+            
+            progressBar.style.width = `${percentage}%`;
+            progressText.textContent = `${percentage}%`;
+            
+            if (percentage === 0) {
+                progressMessage.textContent = "Comece marcando os itens na seção checklist para ativar seu progresso.";
+                progressMessage.className = "text-[10px] text-center text-gray-400 mt-1";
+            } else if (percentage < 50) {
+                progressMessage.textContent = "Ótimo começo! Continue assim.";
+                progressMessage.className = "text-[10px] text-center text-blue-500 font-medium mt-1";
+            } else if (percentage < 100) {
+                progressMessage.textContent = "Quase lá! Falta pouco para terminar.";
+                progressMessage.className = "text-[10px] text-center text-purple-500 font-medium mt-1";
+            } else {
+                progressMessage.textContent = "Parabéns! Fase 1 concluída com sucesso! 🎉";
+                progressMessage.className = "text-[10px] text-center text-green-600 font-bold mt-1";
+            }
+        }
+        
+        updateProgress();
+    });
+</script>
+</body>
+</html>
